@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Dummy : MonoBehaviour
 {
+    public AudioMixerGroup micSilentGroup;
+
     private AudioClip micClip;
     private AudioSource micAudioSource;
     private MeshRenderer meshRenderer;
@@ -13,11 +16,12 @@ public class Dummy : MonoBehaviour
     private void Start()
     {
         micName = Microphone.devices[0];
-        micClip = Microphone.Start(micName, true, 10, 44100);
+        micClip = Microphone.Start(micName, true, 1, 44100);
 
         micAudioSource = gameObject.AddComponent<AudioSource>();
         micAudioSource.clip = micClip;
         micAudioSource.loop = true;
+        micAudioSource.outputAudioMixerGroup = micSilentGroup;
 
         while (!(Microphone.GetPosition(micName) > 0)) { }
         micAudioSource.Play();
@@ -31,9 +35,12 @@ public class Dummy : MonoBehaviour
     {
         float nextPitch = pitchEstimator.Estimate(micAudioSource);
 
-        if (float.IsNaN(nextPitch)) return;
+        if (float.IsNaN(nextPitch))
+        {
+            return;
+        }
 
-        if (pitches.Count >= 50)
+        if (pitches.Count >= 20)
         {
             pitches.RemoveAt(0);
         }
@@ -49,15 +56,15 @@ public class Dummy : MonoBehaviour
 
         avgPitch /= pitches.Count;
 
-        if (avgPitch > 150)
+        if (avgPitch >= 170 && avgPitch < 220)
         {
             meshRenderer.material.color = Color.green;
         } 
-        else if (avgPitch > 120)
+        else if (avgPitch >= 120 && avgPitch < 170)
         {
             meshRenderer.material.color = Color.red;
         }
-        else if (avgPitch > 90)
+        else if (avgPitch >= 70 && avgPitch < 120)
         {
             meshRenderer.material.color = Color.blue;
         }
