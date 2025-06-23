@@ -5,16 +5,16 @@ public class Gate : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private HumDial humDial;
-    [SerializeField] private string correctNote;
-    [SerializeField] private float holdDur = 1;
-    [SerializeField] private float flashDur = 0.4f;
+    [SerializeField] private string[] keyNotes;
+    [SerializeField] private float holdDur = 0.5f;
 
     private Renderer[] childRenderers => GetComponentsInChildren<Renderer>();
     private Color[] childRendererColors;
     private bool opened;
-    private bool flashing;
     private float flashTimer;
     private float noteTimer;
+    private int keyIdx;
+    private int flashIdx;
 
     public void OnTriggerEnter(Collider collider)
     {
@@ -22,7 +22,7 @@ public class Gate : MonoBehaviour
         {
             humDial.gameObject.SetActive(true);
             noteTimer = holdDur;
-            flashTimer = flashDur;
+            flashTimer = holdDur;
         }
     }
 
@@ -31,9 +31,7 @@ public class Gate : MonoBehaviour
         if (collider.tag == "Player")
         {
             humDial.gameObject.SetActive(false);
-
-            for (int i = 0; i < childRenderers.Length; i++)
-                childRenderers[i].material.color = childRendererColors[i];
+            ResetColors();
         }
     }
 
@@ -43,9 +41,12 @@ public class Gate : MonoBehaviour
 
         animator.SetBool("Opened", true);
         opened = true;
-
         humDial.gameObject.SetActive(false);
+        ResetColors();
+    }
 
+    private void ResetColors()
+    {
         for (int i = 0; i < childRenderers.Length; i++)
             childRenderers[i].material.color = childRendererColors[i];
     }
@@ -62,34 +63,37 @@ public class Gate : MonoBehaviour
     {
         if (humDial.gameObject.activeSelf)
         {
-            if (humDial.currNote == correctNote)
+            if (keyIdx < keyNotes.Length && humDial.currNote == keyNotes[keyIdx])
                 noteTimer -= Time.deltaTime;
             else
                 noteTimer = holdDur;
 
             if (noteTimer <= 0)
-                OpenGate();
+            {
+                keyIdx++;
+
+                if (keyIdx >= keyNotes.Length)
+                    OpenGate();
+            }
 
             flashTimer -= Time.deltaTime;
 
             if (flashTimer <= 0)
             {
-                if (flashing)
+                if (flashIdx >= keyNotes.Length)
                 {
-                    for (int i = 0; i < childRenderers.Length; i++)
-                        childRenderers[i].material.color = childRendererColors[i];
-
-                    flashing = false;
+                    ResetColors();
+                    flashIdx = 0;
                 } 
                 else
                 {
                     for (int i = 0; i < childRenderers.Length; i++)
-                        childRenderers[i].material.color = humDial.colors[correctNote];
+                        childRenderers[i].material.color = humDial.colors[keyNotes[flashIdx]];
 
-                    flashing = true;
+                    flashIdx++;
                 }
 
-                flashTimer = flashDur;
+                flashTimer = holdDur;
             }
         }
     }

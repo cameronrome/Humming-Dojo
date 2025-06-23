@@ -58,7 +58,7 @@ public class HumDial : MonoBehaviour
 
     private void RecordNote(int noteIdx)
     {
-        if (prevNotes.Count >= 100)
+        if (prevNotes.Count >= 50)
             prevNotes.RemoveAt(0);
 
         prevNotes.Add(noteIdx);
