@@ -31,14 +31,13 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer()
     {
-    Vector3 movement = new Vector3(move.x, 0f, move.y);
+        Vector3 movement = new Vector3(move.x, 0f, move.y);
 
-    if (movement != Vector3.zero) //optional, makes it so rotation angle stays when not moving
-    {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
-    }
+        if (movement != Vector3.zero) //optional, makes it so rotation angle stays when not moving
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
+        }
+
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
-
-    
-}
+    }
 }

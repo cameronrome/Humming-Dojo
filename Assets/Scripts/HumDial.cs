@@ -2,12 +2,24 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
 
 public class HumDial : MonoBehaviour
 {
     public AudioMixerGroup micSilentGroup;
     public List<HumDialTab> tabs;
+    public string currNote = "";
+
+    public Dictionary<string, Color> colors = new Dictionary<string, Color>()
+    {
+        { "C4", new Color(0.9725f, 0.6706f, 0.6784f) },
+        { "D4", new Color(0.9961f, 0.8392f, 0.6471f) },
+        { "E4", new Color(0.9804f, 0.9647f, 0.7216f) },
+        { "F4", new Color(0.8118f, 0.898f, 0.7216f) },
+        { "G4", new Color(0.6667f, 0.8745f, 0.9294f) },
+        { "A4", new Color(0.651f, 0.7569f, 0.898f) },
+        { "B4", new Color(0.7294f, 0.6902f, 0.8431f) },
+        { "C5", new Color(0.9294f, 0.7843f, 0.8745f) },
+    };
 
     private AudioClip micClip;
     private AudioSource micAudioSource;
@@ -17,20 +29,16 @@ public class HumDial : MonoBehaviour
     private string[] notes = { "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5" };
     private float[] notePitches = { 246.94f, 261.63f, 293.66f, 329.63f, 349.23f, 392f, 440f, 493.88f, 523.25f, 554.37f };
 
-    public int CalcNoteIdx(float pitch)
+    private int CalcNoteIdx(float pitch)
     {
         for (int i = 1; i < notePitches.Length - 1; i++)
-        {
             if (pitch >= (notePitches[i - 1] + notePitches[i]) / 2f && pitch < (notePitches[i] + notePitches[i + 1]) / 2f)
-            {
                 return i;
-            }
-        }
 
         return -1;
     }
 
-    public void SetNote(int noteIdx)
+    private void SetNote(int noteIdx)
     {
         foreach (HumDialTab tab in tabs)
             tab.ResetGlow();
@@ -39,39 +47,33 @@ public class HumDial : MonoBehaviour
         {
             tabs[noteIdx - 1].Glow();
             GetComponentInChildren<TMP_Text>().text = notes[noteIdx - 1];
+            currNote = notes[noteIdx - 1];
         }
         else
         {
             GetComponentInChildren<TMP_Text>().text = "";
+            currNote = "";
         }
     }
 
-    public void RecordNote(int noteIdx)
+    private void RecordNote(int noteIdx)
     {
-        if (prevNotes.Count >= 50)
-        {
+        if (prevNotes.Count >= 100)
             prevNotes.RemoveAt(0);
-        }
 
         prevNotes.Add(noteIdx);
     }
 
-    public int? GetNote()
+    private int? GetNoteIdx()
     {
         if (prevNotes.Count == 0)
-        {
             return null;
-        }
 
         int noteIdx = prevNotes[0];
 
         foreach (int prevNote in prevNotes)
-        {
             if (prevNote != noteIdx)
-            {
                 return null;
-            }
-        }
 
         return noteIdx;
     }
@@ -91,6 +93,8 @@ public class HumDial : MonoBehaviour
 
         pitchEstimator = GetComponent<AudioPitchEstimator>();
         prevNotes = new List<int>();
+
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -101,12 +105,9 @@ public class HumDial : MonoBehaviour
 
         RecordNote(noteIdx);
 
-        int? nextNote = GetNote();
+        int? nextNoteIdx = GetNoteIdx();
 
-        if (nextNote != null)
-        {
-            SetNote((int)nextNote);
-        }
+        if (nextNoteIdx != null)
+            SetNote((int)nextNoteIdx);
     }
-
 }
