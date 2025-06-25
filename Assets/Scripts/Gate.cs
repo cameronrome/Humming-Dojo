@@ -10,9 +10,10 @@ public class Gate : MonoBehaviour
 
     private Renderer[] childRenderers => GetComponentsInChildren<Renderer>();
     private Color[] childRendererColors;
-    private bool opened;
     private float flashTimer;
     private float noteTimer;
+    private bool opened;
+    private bool inRange;
     private int keyIdx;
     private int flashIdx;
 
@@ -23,6 +24,7 @@ public class Gate : MonoBehaviour
             humDial.gameObject.SetActive(true);
             noteTimer = holdDur;
             flashTimer = holdDur;
+            inRange = true;
         }
     }
 
@@ -31,6 +33,7 @@ public class Gate : MonoBehaviour
         if (collider.tag == "Player")
         {
             humDial.gameObject.SetActive(false);
+            inRange = false;
             ResetColors();
         }
     }
@@ -41,6 +44,7 @@ public class Gate : MonoBehaviour
 
         animator.SetBool("Opened", true);
         opened = true;
+        inRange = false;
         humDial.gameObject.SetActive(false);
         ResetColors();
     }
@@ -61,7 +65,7 @@ public class Gate : MonoBehaviour
 
     private void Update()
     {
-        if (humDial.gameObject.activeSelf)
+        if (inRange)
         {
             if (keyIdx < keyNotes.Length && humDial.currNote == keyNotes[keyIdx])
                 noteTimer -= Time.deltaTime;
