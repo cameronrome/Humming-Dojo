@@ -19,19 +19,20 @@ public class Health : MonoBehaviour
         health_bar.fillAmount = Mathf.Clamp(current_health / max_health, 0, 1);
     }
 
-    void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         current_health -= amount;
-        current_health = Mathf.Min(current_health, 0);
+        current_health = Mathf.Max(current_health, 0);
+
+        Debug.Log(current_health);
 
         if (current_health <= 0)
         {
-            health_bar.gameObject.SetActive(false);
             // actions when die
         }
     }
 
-    void Heal(float amount)
+    public void Heal(float amount)
     {
         current_health += amount;
         current_health = Mathf.Min(current_health, max_health);
