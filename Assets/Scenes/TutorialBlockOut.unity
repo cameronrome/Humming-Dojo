@@ -1030,10 +1030,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 606971719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 108}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 7.2948, y: 107}
+  m_SizeDelta: {x: -424.5118, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &135295164
 MonoBehaviour:
@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.4795227, y: 0, z: 0.5504761, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3198,13 +3198,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 328957929}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 328957931}
+        m_TargetAssemblyTypeName: CombatSystem, Assembly-CSharp
+        m_MethodName: OnHealButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3464,6 +3464,7 @@ MonoBehaviour:
   enemy_health_bar: {fileID: 1348986793}
   battle_text: {fileID: 135295164}
   combatCanvas: {fileID: 829047587}
+  healthbarCanvas: {fileID: 606971715}
   attackCanvas: {fileID: 1201320453}
 --- !u!1 &329845168
 GameObject:
@@ -7531,7 +7532,8 @@ GameObject:
   - component: {fileID: 470551246}
   - component: {fileID: 470551249}
   - component: {fileID: 470551248}
-  - component: {fileID: 470551247}
+  - component: {fileID: 470551251}
+  - component: {fileID: 470551250}
   m_Layer: 0
   m_Name: Combat Trigger Zone
   m_TagString: Untagged
@@ -7554,19 +7556,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 643762408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &470551247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470551245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b6b9b25f017b834fa176faf6c062513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraFollow: {fileID: 767101523}
 --- !u!65 &470551248
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7596,6 +7585,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470551245}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &470551250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470551245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea85fad0c2480468efbe96b93d6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatSystem: {fileID: 328957931}
+--- !u!114 &470551251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470551245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6b9b25f017b834fa176faf6c062513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 767101523}
 --- !u!1 &472869644
 GameObject:
   m_ObjectHideFlags: 0
@@ -10395,7 +10410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &606971716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12111,7 +12126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &829047588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18543,7 +18558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1201320454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31627,7 +31642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6885811647408633359, guid: 9f98e8159547d1b48a1203592363b3a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 198.08
+      value: 190.6
       objectReference: {fileID: 0}
     - target: {fileID: 6885811647408633359, guid: 9f98e8159547d1b48a1203592363b3a8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31685,9 +31700,9 @@ SceneRoots:
   - {fileID: 1602104301}
   - {fileID: 733460873}
   - {fileID: 643762408}
-  - {fileID: 829047591}
   - {fileID: 566845510}
   - {fileID: 2125160819}
   - {fileID: 328957930}
+  - {fileID: 829047591}
   - {fileID: 1201320457}
   - {fileID: 606971719}

@@ -26,8 +26,10 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(target != null)
+        if (target != null)
         {
+            //target_offset = normal_offset; // temporary for testing
+
             current_offset = Vector3.Lerp(current_offset, target_offset, Time.deltaTime * zoomSpeed);
             Vector3 targetPosition = target.position + current_offset;
 

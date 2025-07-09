@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
         health_bar.fillAmount = Mathf.Clamp(current_health / max_health, 0, 1);
     }
 
-    public void TakeDamage(float amount)
+    public bool TakeDamage(float amount)
     {
         current_health -= amount;
         current_health = Mathf.Max(current_health, 0);
@@ -28,7 +28,11 @@ public class Health : MonoBehaviour
 
         if (current_health <= 0)
         {
-            // actions when die
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
