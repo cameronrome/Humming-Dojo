@@ -28,11 +28,11 @@ public class Health : MonoBehaviour
 
         if (current_health <= 0)
         {
-            return true;
+            return true; //if out of health, return TRUE (they are dead)
         }
         else
         {
-            return false;
+            return false; //otherwise, it is false that they are dead
         }
     }
 
@@ -40,5 +40,15 @@ public class Health : MonoBehaviour
     {
         current_health += amount;
         current_health = Mathf.Min(current_health, max_health);
+    }
+
+    public float GetMaxHealth()
+    {
+        return max_health;
+    }
+
+    public float GetCurrentHealth()
+    {
+        return current_health;
     }
 }

@@ -794,7 +794,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 105769901}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 328957931}
+        m_TargetAssemblyTypeName: CombatSystem, Assembly-CSharp
+        m_MethodName: OnDefendButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &105769901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1673,6 +1685,81 @@ MonoBehaviour:
   m_EditMode: 0
   m_FlipNormals: 0
   isOnGrid: 1
+--- !u!1 &165788568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165788569}
+  - component: {fileID: 165788571}
+  - component: {fileID: 165788570}
+  m_Layer: 5
+  m_Name: BreathBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &165788569
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165788568}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 606971719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -357.4, y: 129.9}
+  m_SizeDelta: {x: 109.02, y: 11.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &165788570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165788568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.29045916, g: 0.7224129, b: 0.7735849, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &165788571
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165788568}
+  m_CullTransparentMesh: 1
 --- !u!1 &174036633
 GameObject:
   m_ObjectHideFlags: 0
@@ -10487,6 +10574,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1659180890}
+  - {fileID: 165788569}
   - {fileID: 1348986792}
   - {fileID: 135295163}
   m_Father: {fileID: 0}
@@ -29140,6 +29228,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2531885361961934474, guid: 9f98e8159547d1b48a1203592363b3a8, type: 3}
   m_PrefabInstance: {fileID: 2463692661460166476}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1883568952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883568943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396c289484267dc41a65830b0bb9dbb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current_breath: 100
+  max_breath: 100
+  breath_bar: {fileID: 165788570}
 --- !u!43 &1892707118
 Mesh:
   m_ObjectHideFlags: 0
@@ -31683,7 +31786,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2531885361961934474, guid: 9f98e8159547d1b48a1203592363b3a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1883568952}
   m_SourcePrefab: {fileID: 100100000, guid: 9f98e8159547d1b48a1203592363b3a8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
