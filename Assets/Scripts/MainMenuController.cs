@@ -8,7 +8,9 @@ public class MainMenuController : MonoBehaviour
     public float cameraMoveSpeed = 2f;
     public GameObject mainMenuUI;
     public MonoBehaviour playerController;
-    public MonoBehaviour cameraFollowScript; 
+    public MonoBehaviour cameraFollowScript;
+    public GameObject inventoryUI;
+
 
     public void StartGame()
     {
@@ -36,6 +38,8 @@ public class MainMenuController : MonoBehaviour
         // Enable camera follow and player control
         cameraFollowScript.enabled = true;
         playerController.enabled = true;
+
+        inventoryUI.SetActive(true);
     }
 
     public void QuitGame()
