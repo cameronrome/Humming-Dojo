@@ -26,11 +26,16 @@ public class CombatSystem : MonoBehaviour
     public GameObject combatCanvas;
     public GameObject healthbarCanvas;
     public GameObject attackCanvas;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public CameraFollow cameraFollow;
+    public PlayerController playerController;
 
     public void BeginCombat()
         {
             healthbarCanvas.SetActive(true);
+
+            cameraFollow.StartCombatZoom();
+            playerController.DisableMovement();
 
             state = CombatState.START;
 
@@ -225,6 +230,9 @@ public class CombatSystem : MonoBehaviour
         healthbarCanvas.SetActive(false);
 
         enemy.SetActive(false);
+
+        playerController.EnableMovement();
+        cameraFollow.EndCombatZoom();
     }
 
     IEnumerator PlayerLose()
@@ -236,6 +244,8 @@ public class CombatSystem : MonoBehaviour
         combatCanvas.SetActive(false);
         attackCanvas.SetActive(false);
         healthbarCanvas.SetActive(false);
+
+        // playerController.EnableMovement(); //optional code to give player movement back, if scene isn't reloaded
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //reload current scene by index, like player "dies"
 
