@@ -10367,7 +10367,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2591250063275056131, guid: 458fff42cc30ee04c87301895cfa2ab4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1854925130}
   m_SourcePrefab: {fileID: 100100000, guid: 458fff42cc30ee04c87301895cfa2ab4, type: 3}
 --- !u!43 &694304551
 Mesh:
@@ -27029,6 +27032,25 @@ MonoBehaviour:
   m_EditMode: 0
   m_FlipNormals: 0
   isOnGrid: 1
+--- !u!1 &1854925127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2591250063275056131, guid: 458fff42cc30ee04c87301895cfa2ab4, type: 3}
+  m_PrefabInstance: {fileID: 666160286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1854925130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854925127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbddc7724de6ee64a9f9142f4ca41612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraFollow: {fileID: 767101523}
+  playerController: {fileID: 1883568956}
 --- !u!43 &1877044897
 Mesh:
   m_ObjectHideFlags: 0
