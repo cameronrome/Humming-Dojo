@@ -12,10 +12,16 @@ public class PlayerController : MonoBehaviour
     private Vector2 move;
     private Animator animator => GetComponentInChildren<Animator>();
 
+    private bool canMove = true;
+
     
     public void OnMove(InputAction.CallbackContext context)
     {
-        move = context.ReadValue<Vector2>();
+        if (canMove)
+        {
+            move = context.ReadValue<Vector2>();
+        }
+        
 
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer()
     {
+        if (!canMove) return;
+
         Vector3 movement = new Vector3(move.x, 0f, move.y);
 
         if (movement != Vector3.zero) //optional, makes it so rotation angle stays when not moving
@@ -46,5 +54,17 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    public void DisableMovement()
+    {
+        canMove = false;
+        move = Vector2.zero;
+        animator.SetBool("Running", false);
     }
 }
