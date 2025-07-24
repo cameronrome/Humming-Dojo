@@ -7,4 +7,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("TutorialBlockOut");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game Quit");
+    }
 }
