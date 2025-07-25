@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class StartHumming : MonoBehaviour, Interactable
 {
-    [SerializeField] CameraFollow cameraFollow;
-    [SerializeField] PlayerController playerController;
+    [SerializeField] private CameraFollow cameraFollow;
+    [SerializeField] private PlayerController playerController;
 
     private bool interacting = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
