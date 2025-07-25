@@ -30,6 +30,15 @@ public class CombatSystem : MonoBehaviour
     public CameraFollow cameraFollow;
     public PlayerController playerController;
 
+    //HEALTH AND BREATH CONSTANTS
+    private float oneNoteAttackDMG = 10f;
+    private float twoNoteAttackDMG = 30f;
+    private float threeNoteAttackDMG = 60f;
+
+    private float oneNoteAttackBRTH = 15f;
+    private float twoNoteAttackBRTH = 40f;
+    private float threeNoteAttackBRTH = 75f;
+
     public void BeginCombat()
         {
             healthbarCanvas.SetActive(true);
@@ -51,7 +60,7 @@ public class CombatSystem : MonoBehaviour
     {
         battle_text.text = "A wretched enemy appears from the shadows.";
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f); //enemy spawn animation?
 
         state = CombatState.PLAYER_TURN;
         StartCoroutine(PlayerTurn());
@@ -81,45 +90,45 @@ public class CombatSystem : MonoBehaviour
     }
     IEnumerator OneNoteAttack()
     {
-        bool usedBreath = UseBreath(10f); //use breath
+        bool usedBreath = UseBreath(oneNoteAttackBRTH); //use breath
 
         if (usedBreath)
         {
-            bool enemyAlive = AttackAndCheckEnemyAlive(10f); //attack
+            bool enemyAlive = AttackAndCheckEnemyAlive(oneNoteAttackDMG); //attack
             if (enemyAlive)
             {
                 battle_text.text = "Your humming did light damage to the enemy.";
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
             }
         }
     }
 
     IEnumerator TwoNoteAttack()
     {
-        bool usedBreath = UseBreath(30f); //use breath 
+        bool usedBreath = UseBreath(twoNoteAttackBRTH); //use breath 
 
         if (usedBreath)
         {
-            bool enemyAlive = AttackAndCheckEnemyAlive(30f); //attack
+            bool enemyAlive = AttackAndCheckEnemyAlive(twoNoteAttackDMG); //attack
             if (enemyAlive)
             {
                 battle_text.text = "Your humming pattern did medium damage to the enemy.";
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
             }
         }
     }
 
     IEnumerator ThreeNoteAttack()
     {
-        bool usedBreath = UseBreath(60f); //use breath
+        bool usedBreath = UseBreath(threeNoteAttackBRTH); //use breath
 
         if (usedBreath)
         {
-            bool enemyAlive = AttackAndCheckEnemyAlive(60f); //attack
+            bool enemyAlive = AttackAndCheckEnemyAlive(threeNoteAttackDMG); //attack
             if (enemyAlive)
             {
                 battle_text.text = "Your melodic chorus did heavy damage to the enemy!";
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
             }
         }
     }
@@ -138,7 +147,7 @@ public class CombatSystem : MonoBehaviour
             playerBreath.RestoreBreath(35);
             battle_text.text = "Your thoughtful meditation has caused your breath to restore.";
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
     }
 
     IEnumerator Healing()
@@ -156,7 +165,7 @@ public class CombatSystem : MonoBehaviour
             battle_text.text = "Your blissful melody healed you considerably.";
         }  
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
     }
 
 
@@ -199,7 +208,7 @@ public class CombatSystem : MonoBehaviour
         bool dead = playerHealth.TakeDamage(Random.Range(10f, 30f)); // random damage for now
         battle_text.text = "Enemy hit you!";
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         if (dead)
         {
