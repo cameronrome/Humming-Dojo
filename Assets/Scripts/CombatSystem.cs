@@ -63,7 +63,7 @@ public class CombatSystem : MonoBehaviour
         attackCanvas.SetActive(false); //gets rid of the canvas while it happens
 
         yield return StartCoroutine(action);
-        yield return new WaitForSeconds(3f);
+        //yield return new WaitForSeconds(3f);
 
         if(state == CombatState.WIN)
         {
@@ -81,7 +81,7 @@ public class CombatSystem : MonoBehaviour
     }
     IEnumerator OneNoteAttack()
     {
-        bool usedBreath = UseBreath(50f); //use breath
+        bool usedBreath = UseBreath(10f); //use breath
 
         if (usedBreath)
         {
@@ -194,7 +194,7 @@ public class CombatSystem : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         battle_text.text = "Enemy is preparing to attack...";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         bool dead = playerHealth.TakeDamage(Random.Range(10f, 30f)); // random damage for now
         battle_text.text = "Enemy hit you!";
@@ -214,7 +214,7 @@ public class CombatSystem : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         combatCanvas.SetActive(true);
-        battle_text.text = "Attack, Defend or Heal.";
+        battle_text.text = "Attack, Meditate or Heal.";
         yield return new WaitForSeconds(2f);
 
     }
@@ -223,7 +223,7 @@ public class CombatSystem : MonoBehaviour
     {
         battle_text.text = "You defeated that evil enemy!";
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f); //timer during enemy death animation
 
         combatCanvas.SetActive(false);
         attackCanvas.SetActive(false);
@@ -239,7 +239,7 @@ public class CombatSystem : MonoBehaviour
     {
         battle_text.text = "You suffer a defeat to the evil enemy.";
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f); //timer for player death animation
 
         combatCanvas.SetActive(false);
         attackCanvas.SetActive(false);
@@ -261,6 +261,8 @@ public class CombatSystem : MonoBehaviour
         //swtiches UIs from the attack, defend, heal screen to the different attacks
         combatCanvas.SetActive(false);
         attackCanvas.SetActive(true);
+
+        battle_text.text = "Choose an attack.";
     }
 
     public void OnOneNoteAttackButton()
