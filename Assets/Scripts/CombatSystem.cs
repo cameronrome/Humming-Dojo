@@ -11,24 +11,26 @@ public class CombatSystem : MonoBehaviour
 {
     public CombatState state;
 
-    public GameObject enemy;
-    public GameObject player;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject player;
 
-    public Image player_health_bar;
-    public Image enemy_health_bar;
-    public TextMeshProUGUI battle_text;
+    [SerializeField] private Image player_health_bar;
+    [SerializeField] private Image enemy_health_bar;
+    [SerializeField] private TextMeshProUGUI battle_text;
 
-    private Health enemyHealth;
-    private Health playerHealth;
+    [SerializeField] private Health enemyHealth;
+    [SerializeField] private Health playerHealth;
 
     private BreathMeter playerBreath;
 
-    public GameObject combatCanvas;
-    public GameObject healthbarCanvas;
-    public GameObject attackCanvas;
+    [SerializeField] private GameObject combatCanvas;
+    [SerializeField] private GameObject healthbarCanvas;
+    [SerializeField] private GameObject attackCanvas;
 
-    public CameraFollow cameraFollow;
-    public PlayerController playerController;
+    //[SerializeField] private HumDial humDial;
+
+    [SerializeField] private CameraFollow cameraFollow;
+    [SerializeField] private PlayerController playerController;
 
     //HEALTH AND BREATH CONSTANTS
     private float oneNoteAttackDMG = 10f;
@@ -90,10 +92,18 @@ public class CombatSystem : MonoBehaviour
     }
     IEnumerator OneNoteAttack()
     {
+        //check breath
         bool usedBreath = UseBreath(oneNoteAttackBRTH); //use breath
 
         if (usedBreath)
         {
+            //humming dial logic
+            //humDial.gameObject.SetActive(true);
+            //prompt a user for one *random* note
+            //check if the user hits the note
+
+
+            //use move on enemy
             bool enemyAlive = AttackAndCheckEnemyAlive(oneNoteAttackDMG); //attack
             if (enemyAlive)
             {
@@ -223,7 +233,7 @@ public class CombatSystem : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         combatCanvas.SetActive(true);
-        battle_text.text = "Attack, Meditate or Heal.";
+        battle_text.text = "Attack, Breathe or Heal.";
         yield return new WaitForSeconds(2f);
 
     }
