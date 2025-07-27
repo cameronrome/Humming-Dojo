@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     public void QuitToMainMenu()
     {
         Time.timeScale = 1f; // reset before switching scenes
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("MainMenuScene");
     }
 
 }
