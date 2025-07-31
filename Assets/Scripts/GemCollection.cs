@@ -18,4 +18,5 @@ public class GemCollection : MonoBehaviour
             gem_text.text = "" + Gems;
         }
     }
+
 }
