@@ -5,7 +5,7 @@ using TMPro;
 
 public class GemCollection : MonoBehaviour
 {
-    private int Gems = 0;
+    public int Gems = 0;
     [SerializeField] private TextMeshProUGUI gem_text;
 
     private void OnTriggerEnter(Collider other)
@@ -18,5 +18,11 @@ public class GemCollection : MonoBehaviour
             gem_text.text = "" + Gems;
         }
     }
+
+    public void UpdateGemText()
+    {
+        gem_text.text = "" + Gems;
+    }
+
 
 }
