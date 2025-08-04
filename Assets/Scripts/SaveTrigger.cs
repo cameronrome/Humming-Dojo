@@ -5,6 +5,7 @@ public class SaveTrigger : MonoBehaviour
     public GameObject savePromptUI;
 
 
+
     void Start()
     {
         if (savePromptUI != null)
@@ -16,6 +17,8 @@ public class SaveTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             savePromptUI.SetActive(true);
+
+            
         }
     }
 
@@ -24,6 +27,12 @@ public class SaveTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             savePromptUI.SetActive(false);
+            
         }
     }
+
+    
+
+
+
 }
