@@ -44,3 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c59bfd95a99a948b87e0e8fa03125c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 0}
+  isPaused: 0
+  rotatingImage1: {fileID: 0}
+  rotationSpeed1: 20
+  rotatingImage2: {fileID: 0}
+  rotationSpeed2: -20
+  rotatingImage3: {fileID: 0}
+  rotationSpeed3: 20
+  loadGameButton: {fileID: 0}

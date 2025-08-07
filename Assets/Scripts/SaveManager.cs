@@ -19,7 +19,6 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-
         Vector3 pos = playerHealth.transform.position;
         PlayerPrefs.SetFloat("PlayerPosX", pos.x);
         PlayerPrefs.SetFloat("PlayerPosY", pos.y);
@@ -33,8 +32,9 @@ public class SaveManager : MonoBehaviour
 
         Debug.Log("Game Saved!");
 
-        SceneManager.LoadScene("MainMenuScene"); 
+        
     }
+
 
 
     public void LoadGame()

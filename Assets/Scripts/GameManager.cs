@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
         // Disable the Load Game button if no save exists
         if (!PlayerPrefs.HasKey("CurrentHealth"))
         {
-            loadGameButton.SetActive(false);
+            loadGameButton.GetComponent<Button>().interactable = false;
         }
     }
 
