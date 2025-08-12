@@ -1,81 +1,102 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class HumDial : MonoBehaviour
 {
-    public AudioMixerGroup micSilentGroup;
-    public List<HumDialTab> tabs;
-    public string currNote = "";
+    [SerializeField] private Image marker;
+    [SerializeField] private Image wave;
+    [SerializeField] private Image timer;
+    [SerializeField] private Image icon;
+    [SerializeField] private Transform markerAnchor;
+    [SerializeField] private List<Image> tabs;
+    [SerializeField] private List<Sprite> iconSprites;
+    [SerializeField] private List<int> keys;
 
-    public Dictionary<string, Color> colors = new Dictionary<string, Color>()
-    {
-        { "C4", new Color(0.9725f, 0.6706f, 0.6784f) },
-        { "D4", new Color(0.9961f, 0.8392f, 0.6471f) },
-        { "E4", new Color(0.9804f, 0.9647f, 0.7216f) },
-        { "F4", new Color(0.8118f, 0.898f, 0.7216f) },
-        { "G4", new Color(0.6667f, 0.8745f, 0.9294f) },
-        { "A4", new Color(0.651f, 0.7569f, 0.898f) },
-        { "B4", new Color(0.7294f, 0.6902f, 0.8431f) },
-        { "C5", new Color(0.9294f, 0.7843f, 0.8745f) },
-    };
+    public UnityAction OnHumPass;
 
     private AudioClip micClip;
     private AudioSource micAudioSource;
     private AudioPitchEstimator pitchEstimator;
-    private List<int> prevNotes;
+    public AudioMixerGroup micSilentGroup;
     private string micName;
-    private string[] notes = { "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5" };
-    private float[] notePitches = { 246.94f, 261.63f, 293.66f, 329.63f, 349.23f, 392f, 440f, 493.88f, 523.25f, 554.37f };
+    private float prevAngle;
+    private float silentTimer;
+    private float silentDur = 1.5f;
 
-    private int CalcNoteIdx(float pitch)
+    private int keyIdx;
+    private float keyTimer;
+    private float keyDur = 1.5f;
+
+    private List<Color> colors = new List<Color>()
     {
-        for (int i = 1; i < notePitches.Length - 1; i++)
-            if (pitch >= (notePitches[i - 1] + notePitches[i]) / 2f && pitch < (notePitches[i] + notePitches[i + 1]) / 2f)
-                return i;
+        new Color(252f / 255f, 110f / 255f, 102f / 255f, 0.8f),
+        new Color(231f / 255f, 118f / 255f, 25f / 255f, 0.8f),
+        new Color(209f / 255f, 198f / 255f, 26f / 255f, 0.8f),
+        new Color(103f / 255f, 225f / 255f, 95f / 255f, 0.8f),
+        new Color(11f / 255f, 168f / 255f, 207f / 255f, 0.8f),
+        new Color(81f / 255f, 158f / 255f, 199f / 255f, 0.8f),
+        new Color(180f / 255f, 32f / 255f, 239f / 255f, 0.8f)
+    };
 
-        return -1;
+    public void SetKeys(List<int> keys)
+    {
+        this.keys = keys;
     }
 
-    private void SetNote(int noteIdx)
+    public void Open()
     {
-        foreach (HumDialTab tab in tabs)
-            tab.ResetGlow();
+        gameObject.SetActive(true);
+        keyIdx = 0;
+        keyTimer = keyDur;
+        promptTab(keys[keyIdx]);
+        wave.transform.localPosition = new Vector3(0, -150, 0);
+        wave.color = colors[keys[keyIdx]];
+        timer.color = colors[keys[keyIdx]];
+        timer.fillAmount = 0;
+        icon.sprite = iconSprites[keys[keyIdx]];
+    }
 
-        if (noteIdx >= 0)
+    public void Close()
+    {
+        gameObject.SetActive(false);
+        keyIdx = 0;
+    }
+
+    private void promptTab(int idx)
+    {
+        foreach (Image tab in tabs)
         {
-            tabs[noteIdx - 1].Glow();
-            GetComponentInChildren<TMP_Text>().text = notes[noteIdx - 1];
-            currNote = notes[noteIdx - 1];
+            tab.enabled = true;
         }
-        else
+
+        if (idx >= 0 && idx < tabs.Count)
         {
-            GetComponentInChildren<TMP_Text>().text = "";
-            currNote = "";
+            tabs[idx].enabled = false;
         }
     }
 
-    private void RecordNote(int noteIdx)
+    private float? estimatePitch()
     {
-        if (prevNotes.Count >= 50)
-            prevNotes.RemoveAt(0);
+        float pitch = pitchEstimator.Estimate(micAudioSource);
 
-        prevNotes.Add(noteIdx);
-    }
+        if (float.IsNaN(pitch))
+        {
+            silentTimer -= Time.deltaTime;
 
-    private int? GetNoteIdx()
-    {
-        if (prevNotes.Count == 0)
+            if (silentTimer < 0)
+            {
+                return pitch;
+            }
+
             return null;
+        } 
+        
+        silentTimer = silentDur;
 
-        int noteIdx = prevNotes[0];
-
-        foreach (int prevNote in prevNotes)
-            if (prevNote != noteIdx)
-                return null;
-
-        return noteIdx;
+        return pitch;
     }
 
     private void Start()
@@ -92,22 +113,71 @@ public class HumDial : MonoBehaviour
         micAudioSource.Play();
 
         pitchEstimator = GetComponent<AudioPitchEstimator>();
-        prevNotes = new List<int>();
-
-        gameObject.SetActive(false);
     }
 
     private void Update()
     {
+        float? pitch = estimatePitch();
 
-        float pitch = pitchEstimator.Estimate(micAudioSource);
-        int noteIdx = CalcNoteIdx(pitch);
+        if (pitch == null) return;
 
-        RecordNote(noteIdx);
+        float nextAngle = 0;
 
-        int? nextNoteIdx = GetNoteIdx();
+        if (!float.IsNaN((float)pitch))
+        {
+            float angleRange = 180;
+            float angleOffset = 90;
+            float freqRange = pitchEstimator.frequencyMax - pitchEstimator.frequencyMin;
+            float pitchVal = (float)pitch - pitchEstimator.frequencyMin;
 
-        if (nextNoteIdx != null)
-            SetNote((int)nextNoteIdx);
+            nextAngle = pitchVal * angleRange / freqRange + angleOffset;
+        }
+
+        float targetAngle = Mathf.Lerp(prevAngle, nextAngle, 2 * Time.deltaTime);
+        marker.transform.RotateAround(markerAnchor.position, -Vector3.forward, targetAngle - prevAngle);
+
+        if (keyIdx < keys.Count)
+        {
+            float tabAngle = 180 / tabs.Count;
+            float keyAngleStart = tabAngle * keys[keyIdx] + 90;
+            float keyAngleEnd = keyAngleStart + tabAngle;
+
+            if (targetAngle >= keyAngleStart && targetAngle <= keyAngleEnd)
+            {
+                keyTimer -= Time.deltaTime;
+                wave.transform.localPosition = new Vector3(0, wave.transform.localPosition.y + (150 / keyDur) * Time.deltaTime, 0);
+                timer.fillAmount += (1 / keyDur) * Time.deltaTime; 
+
+                if (keyTimer <= 0 && keyIdx < keys.Count)
+                {
+                    keyIdx++;
+
+                    if (keyIdx < keys.Count)
+                    {
+                        wave.color = colors[keys[keyIdx]];
+                        timer.color = colors[keys[keyIdx]];
+                        timer.fillAmount = 0;
+                        icon.sprite = iconSprites[keys[keyIdx]];
+                        promptTab(keys[keyIdx]);
+                    }
+                    else
+                    {
+                        wave.transform.localPosition = new Vector3(0, -150, 0);
+                        timer.fillAmount = 0;
+                        icon.color = new Color(0, 0, 0, 0);
+                        promptTab(-1);
+                        OnHumPass?.Invoke();
+                    }
+                }
+            }
+            else
+            {
+                keyTimer = keyDur;
+                timer.fillAmount = 0;
+                wave.transform.localPosition = new Vector3(0, -150, 0);
+            }
+        }
+
+        prevAngle = targetAngle;
     }
 }

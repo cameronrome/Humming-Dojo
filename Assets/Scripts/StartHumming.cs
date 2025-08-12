@@ -2,24 +2,27 @@ using UnityEngine;
 
 public class StartHumming : MonoBehaviour, Interactable
 {
-    [SerializeField] private CameraFollow cameraFollow;
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] CameraFollow cameraFollow;
+    [SerializeField] PlayerController playerController;
+    [SerializeField] Gate gate;
 
     private bool interacting = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     public void Interact()
     {
-        if (!interacting) //hit interact once
+        if (!interacting && gate.inRange) //hit interact once
         {
             interacting = true;
             playerController.DisableMovement();
             cameraFollow.StartCombatZoom();
+            gate.ShowHumDial();
         }
-        else //hit interact again, leaving the humming screen
+        else if (gate.inRange) //hit interact again, leaving the humming screen
         {
             interacting = false;
             playerController.EnableMovement();
             cameraFollow.EndCombatZoom();
+            gate.HideHumDial();
         }
         
     }

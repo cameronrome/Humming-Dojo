@@ -45,10 +45,12 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
             animator.SetBool("Running", true);
+            animator.SetBool("Idle", false);
         } 
         else
         {
             animator.SetBool("Running", false);
+            animator.SetBool("Idle", true);
         }
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
