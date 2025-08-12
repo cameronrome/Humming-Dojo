@@ -10,7 +10,7 @@ public class SaveTrigger : MonoBehaviour
         if (savePromptUI != null)
             savePromptUI.SetActive(false);
 
-        // Grab reference to SaveManager in the scene
+        
         saveManager = FindObjectOfType<SaveManager>();
     }
 
