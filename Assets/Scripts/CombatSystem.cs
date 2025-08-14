@@ -59,6 +59,8 @@ public class CombatSystem : MonoBehaviour
 
             playerBreath = player.GetComponent<BreathMeter>();
 
+            humDial.setKeyDuration(.75f);
+
             StartCoroutine(SetupBattle());
         }
 
@@ -116,9 +118,8 @@ public class CombatSystem : MonoBehaviour
 
             battle_text.text = "Your humming did light damage to the enemy.";
             humDial.OnHumPass -= handler;
-
-            yield return new WaitForSeconds(3f);
         }
+        yield return new WaitForSeconds(3f);
     }
 
     
@@ -211,17 +212,33 @@ public class CombatSystem : MonoBehaviour
 
         if (current_health == max_health)
         {
-            battle_text.text = "You are unable to gain any more health from your humming melody.";
+            battle_text.text = "You are unable to gain any more health.";
         }
         else
         {
-            playerHealth.Heal(35);
+            humPassed = false;
+
+            humDial.SetKeys(new List<int>() { 6, 5 });
+            humDial.Open();
+
+            battle_text.text = "Hum the notes to heal yourself.";
+
+            humDial.OnHumPass += HealHelper;
+            yield return new WaitUntil(() => humPassed);
+
             battle_text.text = "Your blissful melody healed you considerably.";
+            humDial.OnHumPass -= HealHelper;
         }  
 
         yield return new WaitForSeconds(3f);
     }
 
+    private void HealHelper()
+    {
+        playerHealth.Heal(35);
+        humPassed = true;
+        humDial.Close();
+    }
 
     private bool CheckBreath(float breath_needed) //returns true if it used breath
     {
