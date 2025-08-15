@@ -28,6 +28,7 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private GameObject combatCanvas;
     [SerializeField] private GameObject healthbarCanvas;
     [SerializeField] private GameObject attackCanvas;
+    [SerializeField] private GameObject gemUI;
 
     [SerializeField] private HumDial humDial;
 
@@ -47,6 +48,7 @@ public class CombatSystem : MonoBehaviour
 
     public void BeginCombat()
         {
+            gemUI.SetActive(false);
             healthbarCanvas.SetActive(true);
 
             cameraFollow.StartCombatZoom();
@@ -309,6 +311,7 @@ public class CombatSystem : MonoBehaviour
 
         playerController.EnableMovement();
         cameraFollow.EndCombatZoom();
+        gemUI.SetActive(true);
     }
 
     IEnumerator PlayerLose()
