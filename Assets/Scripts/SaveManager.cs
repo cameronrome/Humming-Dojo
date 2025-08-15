@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -14,6 +14,7 @@ public class SaveManager : MonoBehaviour
     void Start()
     {
         LoadGame();
+        gemCollector.RemoveCollectedGems(); 
     }
 
 
