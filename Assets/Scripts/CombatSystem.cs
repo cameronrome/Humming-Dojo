@@ -105,9 +105,11 @@ public class CombatSystem : MonoBehaviour
 
         if (enoughBreath)
         {
-            humPassed = false; 
+            humPassed = false;
 
-            humDial.SetKeys(new List<int>() { 2 } );
+            int keyNum = GetRandomKey(); 
+
+            humDial.SetKeys(new List<int>() { keyNum } );
             humDial.Open();
 
             battle_text.text = "Hum the note to invoke a small attack.";
@@ -135,7 +137,10 @@ public class CombatSystem : MonoBehaviour
         {
             humPassed = false;
 
-            humDial.SetKeys(new List<int>() { 2, 3 });
+            int keyNum = GetRandomKey();
+            int keyNum2 = GetCloseKey(keyNum);
+
+            humDial.SetKeys(new List<int>() { keyNum, keyNum2 });
             humDial.Open();
 
             battle_text.text = "Hum the notes to invoke a strong attack.";
@@ -147,11 +152,9 @@ public class CombatSystem : MonoBehaviour
             yield return new WaitUntil(() => humPassed);
 
             battle_text.text = "Your humming pattern did medium damage to the enemy.";
-            humDial.OnHumPass -= handler;
-
-            yield return new WaitForSeconds(3f);
-            
+            humDial.OnHumPass -= handler;   
         }
+        yield return new WaitForSeconds(3f);
     }
 
     IEnumerator ThreeNoteAttack()
@@ -163,7 +166,11 @@ public class CombatSystem : MonoBehaviour
         {
             humPassed = false;
 
-            humDial.SetKeys(new List<int>() { 3, 2, 4 });
+            int keyNum = GetRandomKey();
+            int keyNum2 = GetCloseKey(keyNum);
+            int keyNum3 = GetCloseKey(keyNum2);
+
+            humDial.SetKeys(new List<int>() { keyNum, keyNum2, keyNum3 });
             humDial.Open();
 
             battle_text.text = "Hum the notes to invoke a very powerful attack.";
@@ -176,10 +183,8 @@ public class CombatSystem : MonoBehaviour
 
             battle_text.text = "Your melodic chorus did heavy damage to the enemy!";
             humDial.OnHumPass -= handler;
-
-            yield return new WaitForSeconds(3f);
-
         }
+        yield return new WaitForSeconds(3f);
     }
 
     private void AttackHelper(float damage, float breath)
@@ -188,6 +193,31 @@ public class CombatSystem : MonoBehaviour
         playerBreath.UseBreath(breath); // use breath
 
         humPassed = true;
+    }
+
+    private int GetRandomKey(int min = 0, int max = 7)
+    {
+        return Random.Range(min, max); //random number between 0 and 6, for different notes
+    }
+
+    private int GetCloseKey(int key)
+    {
+        int randomOffset;
+
+        if(key == 0)
+        {
+            randomOffset = 1;
+        }
+        else if(key == 6)
+        {
+            randomOffset = -1;
+        }
+        else
+        {
+            randomOffset = Random.value < 0.5f ? -1 : 1;
+        }
+
+        return (key + randomOffset);
     }
 
     IEnumerator RefillBreath()
@@ -220,7 +250,10 @@ public class CombatSystem : MonoBehaviour
         {
             humPassed = false;
 
-            humDial.SetKeys(new List<int>() { 6, 5 });
+            int keyNum = GetRandomKey();
+            int keyNum2 = GetCloseKey(keyNum);
+
+            humDial.SetKeys(new List<int>() { keyNum, keyNum2 });
             humDial.Open();
 
             battle_text.text = "Hum the notes to heal yourself.";
