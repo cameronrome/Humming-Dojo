@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af619296e6a7fe44fa96ae76ba977160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marker: {fileID: 5073114302555130888}
+  marker: {fileID: 1368509134242690820}
   wave: {fileID: 2634853412269447157}
   timer: {fileID: 2380790655436598971}
   icon: {fileID: 5090897233607094977}
@@ -706,6 +706,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6533ce8a9b2d0ab4589813da49a7b24f, type: 3}
   - {fileID: 21300000, guid: 7a1775d9af0afe74188e38638e590c87, type: 3}
   keys: 
+  dotPrefab: {fileID: 8886513682370229262, guid: 11a7e559c327e4045b2824768c99f8d5, type: 3}
   micSilentGroup: {fileID: -6774622242765485675, guid: 2a492a0f872c91244b7b3cc144a623ac, type: 2}
 --- !u!1 &3648294891353829060
 GameObject:
@@ -1126,8 +1127,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3222886556655770515}
-  - component: {fileID: 7173691220089903124}
-  - component: {fileID: 5073114302555130888}
+  - component: {fileID: 5212961655413932294}
+  - component: {fileID: 1368509134242690820}
   m_Layer: 5
   m_Name: Marker
   m_TagString: Untagged
@@ -1154,7 +1155,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -75}
   m_SizeDelta: {x: 23.7, y: 28.8}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7173691220089903124
+--- !u!222 &5212961655413932294
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1162,7 +1163,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5015277948963813967}
   m_CullTransparentMesh: 1
---- !u!114 &5073114302555130888
+--- !u!114 &1368509134242690820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -14,9 +14,12 @@ public class HumDial : MonoBehaviour
     [SerializeField] private List<Image> tabs;
     [SerializeField] private List<Sprite> iconSprites;
     [SerializeField] private List<int> keys;
+    [SerializeField] private GameObject dotPrefab;
+    [SerializeField] private int numDots = 72;
 
     public UnityAction OnHumPass;
 
+    private List<GameObject> dotTrail;
     private AudioClip micClip;
     private AudioSource micAudioSource;
     private AudioPitchEstimator pitchEstimator;
@@ -43,6 +46,7 @@ public class HumDial : MonoBehaviour
 
     public void SetKeys(List<int> keys)
     {
+        new List<int>() { 2 };
         this.keys = keys;
     }
 
@@ -113,6 +117,12 @@ public class HumDial : MonoBehaviour
         micAudioSource.Play();
 
         pitchEstimator = GetComponent<AudioPitchEstimator>();
+        dotTrail = new List<GameObject>();
+
+        for (int i = 0; i < numDots; i++)
+        {
+            dotTrail.Add(null);
+        }
     }
 
     private void Update()
@@ -175,6 +185,40 @@ public class HumDial : MonoBehaviour
                 keyTimer = keyDur;
                 timer.fillAmount = 0;
                 wave.transform.localPosition = new Vector3(0, -150, 0);
+            }
+        }
+
+        for (int i = 0; i < numDots; i++)
+        {
+            float radius = 63f;
+            float angleDeg = i * (360 / numDots);
+            float angleOffset = -90f;
+            float angleRad = Mathf.Deg2Rad * (angleDeg + angleOffset);
+            float offset = 14f;
+
+            if (targetAngle > angleDeg && dotTrail[i] == null)
+            {
+                dotTrail[i] = Instantiate(dotPrefab, transform);
+                dotTrail[i].transform.localPosition = new Vector3(-radius * Mathf.Cos(angleRad), radius * Mathf.Sin(angleRad) - offset);
+            }
+
+            if (targetAngle < angleDeg && dotTrail[i] != null)
+            {
+                Destroy(dotTrail[i]);
+                dotTrail[i] = null;
+            }
+
+            Color dotColor = Color.white;
+
+            if (keyIdx < keys.Count)
+            {
+                dotColor = colors[keys[keyIdx]];
+            }
+
+            if (dotTrail[i] != null)
+            {
+                dotColor.a = (float)i / (float)numDots;
+                dotTrail[i].GetComponent<Image>().color = dotColor;
             }
         }
 
