@@ -2496,6 +2496,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6829405608440744510, guid: 39a202e5fcc6df24ea4546b65403ce33, type: 3}
+      propertyPath: fadeDur
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829405608440744510, guid: 39a202e5fcc6df24ea4546b65403ce33, type: 3}
       propertyPath: numDots
       value: 72
       objectReference: {fileID: 0}

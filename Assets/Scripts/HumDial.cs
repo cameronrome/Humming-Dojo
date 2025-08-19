@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
@@ -15,6 +17,7 @@ public class HumDial : MonoBehaviour
     [SerializeField] private List<Sprite> iconSprites;
     [SerializeField] private List<int> keys;
     [SerializeField] private GameObject dotPrefab;
+    [SerializeField] private float fadeDur = 1f;
     [SerializeField] private int numDots = 72;
 
     public UnityAction OnHumPass;
@@ -46,7 +49,6 @@ public class HumDial : MonoBehaviour
 
     public void SetKeys(List<int> keys)
     {
-        new List<int>() { 2 };
         this.keys = keys;
     }
 
@@ -55,12 +57,12 @@ public class HumDial : MonoBehaviour
         gameObject.SetActive(true);
         keyIdx = 0;
         keyTimer = keyDur;
-        promptTab(keys[keyIdx]);
         wave.transform.localPosition = new Vector3(0, -150, 0);
         wave.color = colors[keys[keyIdx]];
         timer.color = colors[keys[keyIdx]];
         timer.fillAmount = 0;
         icon.sprite = iconSprites[keys[keyIdx]];
+        StartCoroutine(promptTab(keys[keyIdx]));
     }
 
     public void Close()
@@ -69,16 +71,45 @@ public class HumDial : MonoBehaviour
         keyIdx = 0;
     }
 
-    private void promptTab(int idx)
+    private IEnumerator promptTab(int idx)
     {
-        foreach (Image tab in tabs)
-        {
-            tab.enabled = true;
-        }
+        float timer = 0f;
 
-        if (idx >= 0 && idx < tabs.Count)
+        while (timer < fadeDur)
         {
-            tabs[idx].enabled = false;
+            timer += Time.deltaTime;
+
+            if (idx >= 0 && idx < tabs.Count)
+            {
+                float newAlpha = Mathf.Lerp(0.8f, 0f, timer / fadeDur);
+                tabs[idx].color = new Color(tabs[idx].color.r, tabs[idx].color.g, tabs[idx].color.b, newAlpha);
+                icon.color = new Color(icon.color.r, icon.color.g, icon.color.b, 1f - newAlpha / 0.8f);
+            }
+
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator resetTabs()
+    {
+        float timer = 0f;
+
+        while (timer < fadeDur)
+        {
+            timer += Time.deltaTime;
+
+            foreach (Image tab in tabs)
+            {
+                if (tab.color.a < 0.8f)
+                {
+                    float newAlpha = Mathf.Lerp(0f, 0.8f, timer / fadeDur);
+                    tab.color = new Color(tab.color.r, tab.color.g, tab.color.b, newAlpha);
+                    icon.color = new Color(icon.color.r, icon.color.g, icon.color.b, 1f - newAlpha / 0.8f);
+                }
+            }
+
+            yield return null;
         }
     }
 
@@ -168,14 +199,14 @@ public class HumDial : MonoBehaviour
                         timer.color = colors[keys[keyIdx]];
                         timer.fillAmount = 0;
                         icon.sprite = iconSprites[keys[keyIdx]];
-                        promptTab(keys[keyIdx]);
+                        StartCoroutine(resetTabs());
+                        StartCoroutine(promptTab(keys[keyIdx]));
                     }
                     else
                     {
                         wave.transform.localPosition = new Vector3(0, -150, 0);
                         timer.fillAmount = 0;
-                        icon.color = new Color(0, 0, 0, 0);
-                        promptTab(-1);
+                        StartCoroutine(resetTabs());
                         OnHumPass?.Invoke();
                     }
                 }
