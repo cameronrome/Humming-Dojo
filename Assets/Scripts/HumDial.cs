@@ -255,4 +255,9 @@ public class HumDial : MonoBehaviour
 
         prevAngle = targetAngle;
     }
+
+    public void setKeyDuration(float time)
+    {
+        keyDur = time;
+    }
 }

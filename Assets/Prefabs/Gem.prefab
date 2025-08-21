@@ -207,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 397137561a0bffc49af0f5a4d8f6b133, type: 2}
     - target: {fileID: 919132149155446097, guid: 45c53fd8eede8c141b87cb9fc9bf381c, type: 3}
       propertyPath: m_Name
-      value: gemstone raw
+      value: GemstoneRaw
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
