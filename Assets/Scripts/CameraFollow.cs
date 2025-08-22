@@ -11,6 +11,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 normal_offset;
     [SerializeField] private Vector3 zoom_offset;
     [SerializeField] private Vector3 combat_offset;
+    [SerializeField] private Vector3 breathing_offset;
 
     [SerializeField] private Quaternion normal_rotation;
     [SerializeField] private Quaternion combat_rotation;
@@ -60,6 +61,8 @@ public class CameraFollow : MonoBehaviour
             //rotation
             current_rotation = Quaternion.Slerp(current_rotation, target_rotation, Time.deltaTime * zoomSpeed);
             transform.rotation = current_rotation;
+
+            
         }
     }
 
@@ -92,5 +95,22 @@ public class CameraFollow : MonoBehaviour
             ResetZoom();
         }
         target_rotation = normal_rotation;
+    }
+
+    public void StartBreathingZoom()
+    {
+        target_offset = breathing_offset;
+    }
+
+    public void StopBreathingZoom()
+    {
+        if (inZoom)
+        {
+            ZoomOut();
+        }
+        else
+        {
+            ResetZoom();
+        }
     }
 }
