@@ -11,42 +11,26 @@ public class CombatSystem : MonoBehaviour
 {
     public CombatState state;
 
-    [SerializeField] private GameObject enemy;
-    [SerializeField] private GameObject player;
+    public GameObject enemy;
+    public GameObject player;
 
-    [SerializeField] private Image player_health_bar;
-    [SerializeField] private Image enemy_health_bar;
-    [SerializeField] private TextMeshProUGUI battle_text;
+    public Image player_health_bar;
+    public Image enemy_health_bar;
+    public TextMeshProUGUI battle_text;
 
-    [SerializeField] private Health enemyHealth;
-    [SerializeField] private Health playerHealth;
+    private Health enemyHealth;
+    private Health playerHealth;
 
     private BreathMeter playerBreath;
 
-    [SerializeField] private GameObject combatCanvas;
-    [SerializeField] private GameObject healthbarCanvas;
-    [SerializeField] private GameObject attackCanvas;
-
-    //[SerializeField] private HumDial humDial;
-
-    [SerializeField] private CameraFollow cameraFollow;
-    [SerializeField] private PlayerController playerController;
-
-    //HEALTH AND BREATH CONSTANTS
-    private float oneNoteAttackDMG = 10f;
-    private float twoNoteAttackDMG = 30f;
-    private float threeNoteAttackDMG = 60f;
-
-    private float oneNoteAttackBRTH = 15f;
-    private float twoNoteAttackBRTH = 40f;
-    private float threeNoteAttackBRTH = 75f;
+    public GameObject combatCanvas;
+    public GameObject healthbarCanvas;
+    public GameObject attackCanvas;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public void BeginCombat()
         {
             healthbarCanvas.SetActive(true);
-
-            cameraFollow.StartCombatZoom();
-            playerController.DisableMovement();
 
             state = CombatState.START;
 
@@ -62,7 +46,7 @@ public class CombatSystem : MonoBehaviour
     {
         battle_text.text = "A wretched enemy appears from the shadows.";
 
-        yield return new WaitForSeconds(3f); //enemy spawn animation?
+        yield return new WaitForSeconds(3f);
 
         state = CombatState.PLAYER_TURN;
         StartCoroutine(PlayerTurn());
@@ -74,7 +58,7 @@ public class CombatSystem : MonoBehaviour
         attackCanvas.SetActive(false); //gets rid of the canvas while it happens
 
         yield return StartCoroutine(action);
-        //yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);
 
         if(state == CombatState.WIN)
         {
@@ -92,53 +76,45 @@ public class CombatSystem : MonoBehaviour
     }
     IEnumerator OneNoteAttack()
     {
-        //check breath
-        bool usedBreath = UseBreath(oneNoteAttackBRTH); //use breath
+        bool usedBreath = UseBreath(50f); //use breath
 
         if (usedBreath)
         {
-            //humming dial logic
-            //humDial.gameObject.SetActive(true);
-            //prompt a user for one *random* note
-            //check if the user hits the note
-
-
-            //use move on enemy
-            bool enemyAlive = AttackAndCheckEnemyAlive(oneNoteAttackDMG); //attack
+            bool enemyAlive = AttackAndCheckEnemyAlive(10f); //attack
             if (enemyAlive)
             {
                 battle_text.text = "Your humming did light damage to the enemy.";
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
             }
         }
     }
 
     IEnumerator TwoNoteAttack()
     {
-        bool usedBreath = UseBreath(twoNoteAttackBRTH); //use breath 
+        bool usedBreath = UseBreath(30f); //use breath 
 
         if (usedBreath)
         {
-            bool enemyAlive = AttackAndCheckEnemyAlive(twoNoteAttackDMG); //attack
+            bool enemyAlive = AttackAndCheckEnemyAlive(30f); //attack
             if (enemyAlive)
             {
                 battle_text.text = "Your humming pattern did medium damage to the enemy.";
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
             }
         }
     }
 
     IEnumerator ThreeNoteAttack()
     {
-        bool usedBreath = UseBreath(threeNoteAttackBRTH); //use breath
+        bool usedBreath = UseBreath(60f); //use breath
 
         if (usedBreath)
         {
-            bool enemyAlive = AttackAndCheckEnemyAlive(threeNoteAttackDMG); //attack
+            bool enemyAlive = AttackAndCheckEnemyAlive(60f); //attack
             if (enemyAlive)
             {
                 battle_text.text = "Your melodic chorus did heavy damage to the enemy!";
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
             }
         }
     }
@@ -157,7 +133,7 @@ public class CombatSystem : MonoBehaviour
             playerBreath.RestoreBreath(35);
             battle_text.text = "Your thoughtful meditation has caused your breath to restore.";
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
     }
 
     IEnumerator Healing()
@@ -175,7 +151,7 @@ public class CombatSystem : MonoBehaviour
             battle_text.text = "Your blissful melody healed you considerably.";
         }  
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
     }
 
 
@@ -213,12 +189,12 @@ public class CombatSystem : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         battle_text.text = "Enemy is preparing to attack...";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         bool dead = playerHealth.TakeDamage(Random.Range(10f, 30f)); // random damage for now
         battle_text.text = "Enemy hit you!";
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         if (dead)
         {
@@ -233,7 +209,7 @@ public class CombatSystem : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         combatCanvas.SetActive(true);
-        battle_text.text = "Attack, Breathe or Heal.";
+        battle_text.text = "Attack, Defend or Heal.";
         yield return new WaitForSeconds(2f);
 
     }
@@ -242,29 +218,24 @@ public class CombatSystem : MonoBehaviour
     {
         battle_text.text = "You defeated that evil enemy!";
 
-        yield return new WaitForSeconds(3f); //timer during enemy death animation
+        yield return new WaitForSeconds(3f);
 
         combatCanvas.SetActive(false);
         attackCanvas.SetActive(false);
         healthbarCanvas.SetActive(false);
 
         enemy.SetActive(false);
-
-        playerController.EnableMovement();
-        cameraFollow.EndCombatZoom();
     }
 
     IEnumerator PlayerLose()
     {
         battle_text.text = "You suffer a defeat to the evil enemy.";
 
-        yield return new WaitForSeconds(3f); //timer for player death animation
+        yield return new WaitForSeconds(3f);
 
         combatCanvas.SetActive(false);
         attackCanvas.SetActive(false);
         healthbarCanvas.SetActive(false);
-
-        // playerController.EnableMovement(); //optional code to give player movement back, if scene isn't reloaded
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //reload current scene by index, like player "dies"
 
@@ -280,8 +251,6 @@ public class CombatSystem : MonoBehaviour
         //swtiches UIs from the attack, defend, heal screen to the different attacks
         combatCanvas.SetActive(false);
         attackCanvas.SetActive(true);
-
-        battle_text.text = "Choose an attack.";
     }
 
     public void OnOneNoteAttackButton()
