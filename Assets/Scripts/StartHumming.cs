@@ -14,7 +14,7 @@ public class StartHumming : MonoBehaviour, Interactable
         {
             interacting = true;
             playerController.DisableMovement();
-            cameraFollow.StartCombatZoom();
+            cameraFollow.StartCombatZoom(gate.GetDirection());
             gate.ShowHumDial();
         }
         else if (gate.inRange) //hit interact again, leaving the humming screen

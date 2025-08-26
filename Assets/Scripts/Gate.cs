@@ -7,6 +7,8 @@ public class Gate : MonoBehaviour
     [SerializeField] private HumDial humDial;
     [SerializeField] private List<int> keys;
 
+    [SerializeField] private string direction;
+
     public bool inRange;
 
     private bool opened;
@@ -51,5 +53,10 @@ public class Gate : MonoBehaviour
     private void Start()
     {
         humDial.OnHumPass += OpenGate;
+    }
+
+    public string GetDirection()
+    {
+        return direction;
     }
 }
