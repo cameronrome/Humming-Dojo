@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,10 +20,24 @@ public class GameManager : MonoBehaviour
     public RectTransform rotatingImage3;
     public float rotationSpeed3 = 20f;
 
+    public GameObject loadGameButton;
+
     public void mainScene()
     {
         SceneManager.LoadScene("TutorialBlockOut");
     }
+
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll(); 
+        SceneManager.LoadScene("TutorialBlockOut");
+    }
+
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("TutorialBlockOut");
+    }
+
 
     public void QuitGame()
     {
@@ -30,7 +45,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Quit");
     }
 
-    
+    void Start()
+    {
+        // Disable the Load Game button if no save exists
+        if (!PlayerPrefs.HasKey("CurrentHealth"))
+        {
+            loadGameButton.GetComponent<Button>().interactable = false;
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
