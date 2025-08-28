@@ -7,6 +7,8 @@ public class StartBreathing : MonoBehaviour, Interactable
 
     [SerializeField] private GameObject breathDial;
 
+    [SerializeField] private Vector3 cameraOffset = new(-2.5f, -2.6400001f, -0.75f);
+
     private bool interacting = false;
     public void Interact()
     {
@@ -15,7 +17,7 @@ public class StartBreathing : MonoBehaviour, Interactable
             interacting = true;
             playerController.DisableMovement();
             breathDial.SetActive(true);
-            cameraFollow.StartBreathingZoom();
+            cameraFollow.StartBreathingZoom(cameraOffset);
 
 
         }

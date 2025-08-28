@@ -10,11 +10,12 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private Vector3 normal_offset;
     [SerializeField] private Vector3 zoom_offset;
-    [SerializeField] private Vector3 breathing_offset;
+    
 
     [SerializeField] private Quaternion normal_rotation;
+    [SerializeField] private Quaternion breathing_rotation = Quaternion.Euler(20, 0, 0);
 
-    //Combat rotation and offset  is specific, and not needed in inspector
+    //Combat rotation and offset is specific, and not needed in inspector
     private Quaternion combat_rotation;
     private Vector3 combat_offset;
 
@@ -30,10 +31,10 @@ public class CameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     //combat camera offset constants
-    private Vector3 combatZoomOffsetUP = new Vector3(-3.6f, -2.44f, 5.49f);
-    private Vector3 combatZoomOffsetDOWN = new Vector3(3.6f, -2.44f, -5.49f);
-    private Vector3 combatZoomOffsetRIGHT = new Vector3(5.49f, -2.44f, 3.5f);
-    private Vector3 combatZoomOffsetLEFT = new Vector3(-5.49f, -2.44f, -3.5f);
+    private Vector3 combatZoomOffsetUP = new(-3.6f, -2.44f, 5.49f);
+    private Vector3 combatZoomOffsetDOWN = new(3.6f, -2.44f, -5.49f);
+    private Vector3 combatZoomOffsetRIGHT = new(5.49f, -2.44f, 3.5f);
+    private Vector3 combatZoomOffsetLEFT = new(-5.49f, -2.44f, -3.5f);
 
     private Quaternion combatRotationUP = Quaternion.Euler(338.7f, 0, 0);
     private Quaternion combatRotationDOWN = Quaternion.Euler(338.7f, 180, 0);
@@ -123,9 +124,10 @@ public class CameraFollow : MonoBehaviour
         target_rotation = normal_rotation;
     }
 
-    public void StartBreathingZoom()
+    public void StartBreathingZoom(Vector3 breathingOffset)
     {
-        target_offset = breathing_offset;
+        target_offset = breathingOffset;
+        target_rotation = breathing_rotation;
     }
 
     public void StopBreathingZoom()
@@ -138,6 +140,7 @@ public class CameraFollow : MonoBehaviour
         {
             ResetZoom();
         }
+        target_rotation = normal_rotation;
     }
 
     private void SetZoomDirection(string direction)
