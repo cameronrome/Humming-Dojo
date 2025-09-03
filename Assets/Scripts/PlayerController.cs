@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove = true;
 
+    [SerializeField]
+    private CharacterController cc;
+
     
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -21,20 +24,20 @@ public class PlayerController : MonoBehaviour
         {
             move = context.ReadValue<Vector2>();
         }
-        
-
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Awake()
     {
+        cc = gameObject.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
+        CharacterMove();
     }
 
+    // Translate movement
     public void MovePlayer()
     {
         if (!canMove) return;
@@ -46,7 +49,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
             animator.SetBool("Running", true);
             animator.SetBool("Idle", false);
-        } 
+        }
         else
         {
             animator.SetBool("Running", false);
@@ -67,4 +70,32 @@ public class PlayerController : MonoBehaviour
         move = Vector2.zero;
         animator.SetBool("Running", false);
     }
+
+
+    // CharacterController movement
+    void CharacterMove()
+    {
+        if (!canMove) return;
+
+        Vector3 movement = new Vector3(move.x, 0, move.y);
+
+        // Animation and rotation
+        if (movement != Vector3.zero) //optional, makes it so rotation angle stays when not moving
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
+            animator.SetBool("Running", true);
+            animator.SetBool("Idle", false);
+        }
+        else
+        {
+            animator.SetBool("Running", false);
+            animator.SetBool("Idle", true);
+        }
+
+
+        movement = Vector3.ClampMagnitude(movement, 1f);
+        Vector3 finalMove = movement * speed;
+        cc.Move(finalMove * Time.deltaTime);
+    }
+
 }
