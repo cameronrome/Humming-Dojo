@@ -227,7 +227,7 @@ Material:
     - _Normal_Scale: 5
     - _Normal_Strength: 0.1
     - _OcclusionStrength: 1
-    - _Parallax: 0.0485
+    - _Parallax: 0.0353
     - _QueueControl: 0
     - _QueueOffset: 0
     - _REFLECTION: 1
@@ -256,7 +256,7 @@ Material:
     - _Shininess: 0.71
     - _ShoreFade: 1
     - _ShoreFade_Smoothness: 0.2
-    - _Smoothness: 0.5
+    - _Smoothness: 0.75
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Specular_Hardness: 0
@@ -286,8 +286,8 @@ Material:
     m_Colors:
     - _1st_Wave_Direction: {r: 1, g: 0, b: 0, a: 0}
     - _2nd_Wave_Direction: {r: -1, g: 0, b: 1, a: 0}
-    - _BaseColor: {r: 0.17590779, g: 0.5053283, b: 0.6320754, a: 1}
-    - _Color: {r: 0.17590776, g: 0.5053283, b: 0.6320754, a: 1}
+    - _BaseColor: {r: 0.079476684, g: 0.085999176, b: 0.3584906, a: 1}
+    - _Color: {r: 0.07947668, g: 0.08599914, b: 0.35849056, a: 1}
     - _Color_Deep: {r: 0, g: 0.2541522, b: 0.4507858, a: 1}
     - _Color_Shallow: {r: 0.2269659, g: 0.822786, b: 0.4507858, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
