@@ -5,7 +5,7 @@ public class StartBreathing : MonoBehaviour, Interactable
     [SerializeField] private CameraFollow cameraFollow;
     [SerializeField] private PlayerController playerController;
 
-    [SerializeField] private GameObject breathDial;
+    [SerializeField] private BreathDial breathDial;
 
     private bool interacting = false;
     public void Interact()
@@ -14,7 +14,7 @@ public class StartBreathing : MonoBehaviour, Interactable
         {
             interacting = true;
             playerController.DisableMovement();
-            breathDial.SetActive(true);
+            breathDial.gameObject.SetActive(true);
             cameraFollow.StartBreathingZoom();
 
 
@@ -23,7 +23,8 @@ public class StartBreathing : MonoBehaviour, Interactable
         {
             interacting = false;
             playerController.EnableMovement();
-            breathDial.SetActive(false);
+            breathDial.gameObject.SetActive(false);
+            breathDial.Reset();
             cameraFollow.StopBreathingZoom();
 
         }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class BreathDial : MonoBehaviour
@@ -13,24 +14,58 @@ public class BreathDial : MonoBehaviour
     [SerializeField] private Sprite exhaleSprite;
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private float inhaleDur = 5f;
-    [SerializeField] private float exhaleDur = 5f;
+    [SerializeField] private float exhaleDur = 4f;
     [SerializeField] private int numDots = 72;
 
     private List<GameObject> dotTrail;
+    private AudioClip micClip;
+    private AudioSource micAudioSource;
+    private AudioPitchEstimator pitchEstimator;
+    public AudioMixerGroup micSilentGroup;
+    private string micName;
     private bool inhaling = false;
 
-    private void Start()
+    public void Reset()
     {
         timer.fillAmount = 0;
         icon.sprite = inhaleSprite;
         inhaling = true;
-        dotTrail = new List<GameObject>();
         wave.transform.localPosition = new Vector3(0, -150, 0);
+        marker.transform.localPosition = new Vector3(0, -70, 0);
+        marker.transform.rotation = Quaternion.identity;
+    }
+
+    private void UpdateTimer(bool forwards)
+    {
+        int dir = forwards ? 1 : -1;
+        timer.fillAmount += dir * Time.deltaTime / inhaleDur;
+        marker.transform.RotateAround(markerAnchor.position, -dir * Vector3.forward, Time.deltaTime * 360f / inhaleDur);
+        wave.transform.localPosition = new Vector3(0, wave.transform.localPosition.y + dir * (150 / inhaleDur) * Time.deltaTime, 0);
+    }
+
+    private void Start()
+    {
+        Reset();
+
+        dotTrail = new List<GameObject>();
 
         for (int i = 0; i < numDots; i++)
         {
             dotTrail.Add(null);
         }
+
+        micName = Microphone.devices[0];
+        micClip = Microphone.Start(micName, true, 1, 44100);
+
+        micAudioSource = gameObject.AddComponent<AudioSource>();
+        micAudioSource.clip = micClip;
+        micAudioSource.loop = true;
+        micAudioSource.outputAudioMixerGroup = micSilentGroup;
+
+        while (!(Microphone.GetPosition(micName) > 0)) { }
+        micAudioSource.Play();
+
+        pitchEstimator = GetComponent<AudioPitchEstimator>();
     }
 
     private void Update()
@@ -52,15 +87,23 @@ public class BreathDial : MonoBehaviour
 
         if (inhaling)
         {
-            timer.fillAmount += Time.deltaTime / inhaleDur;
-            marker.transform.RotateAround(markerAnchor.position, -Vector3.forward, Time.deltaTime * 360f / inhaleDur);
-            wave.transform.localPosition = new Vector3(0, wave.transform.localPosition.y + (150 / inhaleDur) * Time.deltaTime, 0);
+            UpdateTimer(true);
         }
         else
         {
-            timer.fillAmount += Time.deltaTime / exhaleDur;
-            marker.transform.RotateAround(markerAnchor.position, -Vector3.forward, Time.deltaTime * 360f / exhaleDur);
-            wave.transform.localPosition = new Vector3(0, wave.transform.localPosition.y + (150 / exhaleDur) * Time.deltaTime, 0);
+            float pitch = pitchEstimator.Estimate(micAudioSource);
+
+            if (float.IsNaN(pitch))
+            {
+                if (timer.fillAmount > 0f)
+                {
+                    UpdateTimer(false);
+                }
+            } 
+            else
+            {
+                UpdateTimer(true);
+            }
         }
 
         for (int i = 0; i < numDots; i++)
