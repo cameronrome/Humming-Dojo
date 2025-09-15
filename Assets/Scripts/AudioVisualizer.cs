@@ -6,11 +6,6 @@ public class AudioVisualizer : MonoBehaviour
     public int numberOfBars = 64;
     public float scaleMultiplier = 50f;
     public float radius = 10f;
-    public Gradient colorGradient;
-    private GameObject[] bars;
-    private AudioSource audioSource;
-    private float[] spectrumData;
-
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
