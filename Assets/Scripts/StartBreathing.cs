@@ -8,6 +8,7 @@ public class StartBreathing : MonoBehaviour, Interactable
     [SerializeField] private BreathDial breathDial;
 
     private bool interacting = false;
+
     public void Interact()
     {
         if (!interacting) //hit interact once
@@ -15,18 +16,22 @@ public class StartBreathing : MonoBehaviour, Interactable
             interacting = true;
             playerController.DisableMovement();
             breathDial.gameObject.SetActive(true);
+            breathDial.onBreathPass += CloseBreathDial;
             cameraFollow.StartBreathingZoom();
-
-
         }
         else //hit interact again, leaving the humming screen
         {
-            interacting = false;
-            playerController.EnableMovement();
-            breathDial.gameObject.SetActive(false);
-            breathDial.Reset();
-            cameraFollow.StopBreathingZoom();
-
+            CloseBreathDial();
         }
+    }
+
+    private void CloseBreathDial()
+    {
+        interacting = false;
+        playerController.EnableMovement();
+        breathDial.gameObject.SetActive(false);
+        breathDial.onBreathPass -= CloseBreathDial;
+        breathDial.Reset();
+        cameraFollow.StopBreathingZoom();
     }
 }

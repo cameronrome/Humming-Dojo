@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BreathDial : MonoBehaviour
@@ -16,6 +17,8 @@ public class BreathDial : MonoBehaviour
     [SerializeField] private float inhaleDur = 5f;
     [SerializeField] private float exhaleDur = 4f;
     [SerializeField] private int numDots = 72;
+
+    public UnityAction onBreathPass;
 
     private List<GameObject> dotTrail;
     private AudioClip micClip;
@@ -81,7 +84,7 @@ public class BreathDial : MonoBehaviour
             }
             else
             {
-                gameObject.SetActive(false);
+                onBreathPass?.Invoke();
             }
         }
 
@@ -93,14 +96,7 @@ public class BreathDial : MonoBehaviour
         {
             float pitch = pitchEstimator.Estimate(micAudioSource);
 
-            if (float.IsNaN(pitch))
-            {
-                if (timer.fillAmount > 0f)
-                {
-                    UpdateTimer(false);
-                }
-            } 
-            else
+            if (!float.IsNaN(pitch))
             {
                 UpdateTimer(true);
             }
