@@ -124,3 +124,4 @@ MonoBehaviour:
   cameraFollow: {fileID: 0}
   playerController: {fileID: 0}
   breathDial: {fileID: 0}
+  cameraOffset: {x: -2.5, y: -2.64, z: -0.75}
