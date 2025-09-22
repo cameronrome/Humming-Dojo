@@ -14040,9 +14040,9 @@ MonoBehaviour:
   target: {fileID: 786789262}
   smoothTime: 0.3
   zoomSpeed: 2
-  normal_offset: {x: -2.53, y: -0.73, z: -1.88}
-  zoom_offset: {x: -2.53, y: 4.47, z: -5.69}
-  normal_rotation: {x: 0.17364818, y: 0, z: 0, w: 0.9848077}
+  normal_offset: {x: -3.77, y: 1.11, z: -1.23}
+  zoom_offset: {x: -4.71, y: 3.6, z: -4.82}
+  normal_rotation: {x: 0.05506224, y: 0.17388399, z: -0.019210044, w: 0.9830378}
   breathing_rotation: {x: 0.17364818, y: 0, z: 0, w: 0.9848077}
 --- !u!4 &767101524
 Transform:
