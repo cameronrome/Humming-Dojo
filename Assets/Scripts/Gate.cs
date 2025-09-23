@@ -1,29 +1,35 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private HumDial humDial;
-    [SerializeField] private string[] keyNotes;
-    [SerializeField] private float holdDur = 0.5f;
+    [SerializeField] private List<int> keys;
 
-    private Renderer[] childRenderers => GetComponentsInChildren<Renderer>();
-    private Color[] childRendererColors;
-    private float flashTimer;
-    private float noteTimer;
+    [SerializeField] private string direction;
+
+    public bool inRange;
+
     private bool opened;
-    private bool inRange;
-    private int keyIdx;
-    private int flashIdx;
+
+    public void ShowHumDial()
+    {
+        if (opened) return;
+
+        humDial.SetKeys(keys);
+        humDial.Open();
+    }
+
+    public void HideHumDial()
+    {
+        humDial.Close();
+    }
 
     public void OnTriggerEnter(Collider collider)
     {
         if (collider.tag == "Player" && !opened)
         {
-            humDial.gameObject.SetActive(true);
-            noteTimer = holdDur;
-            flashTimer = holdDur;
             inRange = true;
         }
     }
@@ -32,73 +38,25 @@ public class Gate : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            humDial.gameObject.SetActive(false);
             inRange = false;
-            ResetColors();
         }
     }
 
     private void OpenGate()
     {
-        if (opened) return;
+        if (opened || !inRange) return;
 
         animator.SetBool("Opened", true);
         opened = true;
-        inRange = false;
-        humDial.gameObject.SetActive(false);
-        ResetColors();
-    }
-
-    private void ResetColors()
-    {
-        for (int i = 0; i < childRenderers.Length; i++)
-            childRenderers[i].material.color = childRendererColors[i];
     }
 
     private void Start()
     {
-        childRendererColors = new Color[childRenderers.Length];
-
-        for (int i = 0; i < childRenderers.Length; i++)
-            childRendererColors[i] = childRenderers[i].material.color;
+        humDial.OnHumPass += OpenGate;
     }
 
-    private void Update()
+    public string GetDirection()
     {
-        if (inRange)
-        {
-            if (keyIdx < keyNotes.Length && humDial.currNote == keyNotes[keyIdx])
-                noteTimer -= Time.deltaTime;
-            else
-                noteTimer = holdDur;
-
-            if (noteTimer <= 0)
-            {
-                keyIdx++;
-
-                if (keyIdx >= keyNotes.Length)
-                    OpenGate();
-            }
-
-            flashTimer -= Time.deltaTime;
-
-            if (flashTimer <= 0)
-            {
-                if (flashIdx >= keyNotes.Length)
-                {
-                    ResetColors();
-                    flashIdx = 0;
-                } 
-                else
-                {
-                    for (int i = 0; i < childRenderers.Length; i++)
-                        childRenderers[i].material.color = humDial.colors[keyNotes[flashIdx]];
-
-                    flashIdx++;
-                }
-
-                flashTimer = holdDur;
-            }
-        }
+        return direction;
     }
 }

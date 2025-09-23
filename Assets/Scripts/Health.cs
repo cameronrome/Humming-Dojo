@@ -10,7 +10,8 @@ public class Health : MonoBehaviour
     [SerializeField] private Image health_bar;
     void Start()
     {
-        current_health = max_health;
+        if (!PlayerPrefs.HasKey("CurrentHealth"))
+            current_health = max_health;
     }
 
     // Update is called once per frame
