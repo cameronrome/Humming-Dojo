@@ -12,14 +12,24 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller => GetComponent<CharacterController>();
 
     private bool canMove = true;
+    private float gravity = -9.81f;
     
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
     }
 
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Update()
     {
+        Vector3 velocity = Vector3.zero;
+        velocity.y += gravity * Time.deltaTime;
+
         if (!canMove) return;
 
         Vector3 cameraForward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up).normalized;
@@ -28,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveDir.magnitude > 0.1f)
         {
-            controller.Move(moveDir * moveSpeed * Time.deltaTime);
+            controller.Move(moveDir * moveSpeed * Time.deltaTime + velocity);
             Quaternion targetRotation = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 

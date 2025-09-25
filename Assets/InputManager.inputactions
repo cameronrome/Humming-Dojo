@@ -124,11 +124,22 @@
                 },
                 {
                     "name": "",
-                    "id": "6e0d1d32-7bfc-407c-b8d3-2e2ccb40f68b",
-                    "path": "<Mouse>/delta",
+                    "id": "3af45908-27d6-4b63-b9ef-6526209851a8",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
-                    "groups": "",
+                    "processors": "ScaleVector2(x=100,y=100)",
+                    "groups": ";Gamepad",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "796155bc-99af-4bb3-b152-9eb397ded003",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "DeltaTimeScale,ScaleVector2(x=0.1,y=0.1)",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
