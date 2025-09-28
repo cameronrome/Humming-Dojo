@@ -51,4 +51,15 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Idle", true);
         }
     }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    public void DisableMovement()
+    {
+        canMove = false;
+        //animator.SetBool("Running", false);
+    }
 }
