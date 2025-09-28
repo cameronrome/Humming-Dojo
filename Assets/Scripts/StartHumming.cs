@@ -33,4 +33,14 @@ public class StartHumming : MonoBehaviour, Interactable
         }
         
     }
+
+    public void Update()
+    {
+        if (gate.isOpen())
+        {
+            interacting = false;
+            playerMovement.EnableMovement();
+            cameraFollow.EndCombatZoom();
+        }
+    }
 }
