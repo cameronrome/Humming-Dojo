@@ -33,7 +33,8 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private HumDial humDial;
 
     [SerializeField] private CameraFollow cameraFollow;
-    [SerializeField] private PlayerController playerController;
+    //[SerializeField] PlayerController playerController;
+    [SerializeField] PlayerMovement playerMovement;
 
     //HEALTH AND BREATH CONSTANTS
     private float oneNoteAttackDMG = 10f;
@@ -52,9 +53,10 @@ public class CombatSystem : MonoBehaviour
             healthbarCanvas.SetActive(true);
 
             cameraFollow.StartCombatZoom();
-            playerController.DisableMovement();
+            //playerController.DisableMovement(); //for original movement controller
+            playerMovement.DisableMovement(); //for Jerry's new movement controller
 
-            state = CombatState.START;
+        state = CombatState.START;
 
             enemyHealth = enemy.GetComponent<Health>();
             playerHealth = player.GetComponent<Health>();
@@ -342,7 +344,8 @@ public class CombatSystem : MonoBehaviour
 
         enemy.SetActive(false);
 
-        playerController.EnableMovement();
+        //playerController.EnableMovement(); //for original movement controller
+        playerMovement.EnableMovement(); //for Jerry's new movement controller
         cameraFollow.EndCombatZoom();
         gemUI.SetActive(true);
     }

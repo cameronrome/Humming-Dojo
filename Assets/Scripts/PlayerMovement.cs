@@ -60,6 +60,6 @@ public class PlayerMovement : MonoBehaviour
     public void DisableMovement()
     {
         canMove = false;
-        //animator.SetBool("Running", false);
+        animator.SetBool("Running", false);
     }
 }
