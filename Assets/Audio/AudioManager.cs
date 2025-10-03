@@ -16,7 +16,6 @@ public class AudioManager : MonoBehaviour
         PlayForestAmbience();
     }
 
-
     public void PlayFootstep()
     {
         RuntimeManager.PlayOneShotAttached(footstepEvent, player);
@@ -26,7 +25,6 @@ public class AudioManager : MonoBehaviour
     {
         RuntimeManager.PlayOneShot(ForestAmbience);
     }
-
     void Update()
     {
         time += Time.deltaTime;

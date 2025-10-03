@@ -47,6 +47,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 937
+--- !u!114 &-7600796157688290043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638950460556681315
+  FileSizes:
+  - Name: Desktop
+    Value: 15854336
+  Exists: 1
 --- !u!114 &-5668278445562807142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +94,59 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 937
+--- !u!114 &-5019052164351616273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Soundtracks/Soundtracks
+  m_EditorClassIdentifier: 
+  Path: event:/Soundtracks/Soundtracks
+  Guid:
+    Data1: -1862746041
+    Data2: 1082607082
+    Data3: -726232394
+    Data4: 1016978562
+  Banks:
+  - {fileID: -7600796157688290043}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4201903495558604935}
+  - {fileID: -4796506801802193068}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1425498
+--- !u!114 &-4796506801802193068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Soundtracks/trackVolume
+  m_EditorClassIdentifier: 
+  Name: trackVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 3238876380
+    data2: 549824268
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-4687530410568580967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +265,7 @@ MonoBehaviour:
   - {fileID: -8800529138582846103}
   - {fileID: 915117857148169727}
   - {fileID: -2827331401400688810}
+  - {fileID: -7600796157688290043}
   EditorEvents:
   - {fileID: -1255640663076183248}
   - {fileID: 8604042412863925370}
@@ -203,12 +277,14 @@ MonoBehaviour:
   - {fileID: 3767537338021877995}
   - {fileID: -4687530410568580967}
   - {fileID: -5668278445562807142}
+  - {fileID: -5019052164351616273}
+  - {fileID: 3823745891672839037}
   EditorParameters: []
   MasterBanks:
   - {fileID: 915117857148169727}
   StringsBanks:
   - {fileID: 1031185513706669166}
-  cacheTime: 638950425190809021
+  cacheTime: 638950460556681315
   cacheVersion: 131632
 --- !u!114 &478607684072985983
 MonoBehaviour:
@@ -252,7 +328,7 @@ MonoBehaviour:
   Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638950373240574148
+  lastModified: 638950460556025995
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -272,10 +348,10 @@ MonoBehaviour:
   Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638950373240578848
+  lastModified: 638950460556029689
   FileSizes:
   - Name: Desktop
-    Value: 1340
+    Value: 1642
   Exists: 1
 --- !u!114 &2768145703862363586
 MonoBehaviour:
@@ -335,6 +411,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 703
+--- !u!114 &3823745891672839037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Soundtracks/Soundtrack01
+  m_EditorClassIdentifier: 
+  Path: event:/Soundtracks/Soundtrack01
+  Guid:
+    Data1: 769553013
+    Data2: 1135947451
+    Data3: -1115081539
+    Data4: -550396011
+  Banks:
+  - {fileID: -7600796157688290043}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 239797
 --- !u!114 &3895164927216238868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +466,42 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &4201903495558604935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Soundtracks/trackState
+  m_EditorClassIdentifier: 
+  Name: trackState
+  StudioPath: 
+  Min: 0
+  Max: 11
+  Default: 0
+  ID:
+    data1: 17589459
+    data2: 63396638
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Forest
+  - Track02
+  - Track03
+  - Underwater
+  - Waterfall
+  - Track05
+  - Track06
+  - Track07
+  - Track08
+  - Puzzle
+  - Minigame
+  - StopTrack
+  Exists: 1
 --- !u!114 &8604042412863925370
 MonoBehaviour:
   m_ObjectHideFlags: 0
