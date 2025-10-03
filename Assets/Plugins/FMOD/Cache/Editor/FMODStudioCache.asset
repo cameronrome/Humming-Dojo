@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Ambiences.bank
   Name: Ambiences
   StudioPath: bank:/Ambiences
-  lastModified: 638950425190809021
+  lastModified: 638950489241001460
   FileSizes:
   - Name: Desktop
-    Value: 3431872
+    Value: 4841056
   Exists: 1
 --- !u!114 &-7660767760070681577
 MonoBehaviour:
@@ -221,6 +221,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 133978
+--- !u!114 &-1198887219894531869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/Trees
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/Trees
+  Guid:
+    Data1: -484263513
+    Data2: 1166228932
+    Data3: -1905787767
+    Data4: 1669055730
+  Banks:
+  - {fileID: -8800529138582846103}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 106010
 --- !u!114 &-651168650537272564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,12 +306,13 @@ MonoBehaviour:
   - {fileID: -5668278445562807142}
   - {fileID: -5019052164351616273}
   - {fileID: 3823745891672839037}
+  - {fileID: -1198887219894531869}
   EditorParameters: []
   MasterBanks:
   - {fileID: 915117857148169727}
   StringsBanks:
   - {fileID: 1031185513706669166}
-  cacheTime: 638950460556681315
+  cacheTime: 638950489241043795
   cacheVersion: 131632
 --- !u!114 &478607684072985983
 MonoBehaviour:
@@ -328,7 +356,7 @@ MonoBehaviour:
   Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638950460556025995
+  lastModified: 638950489241040834
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -348,10 +376,10 @@ MonoBehaviour:
   Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638950460556029689
+  lastModified: 638950489241043795
   FileSizes:
   - Name: Desktop
-    Value: 1642
+    Value: 1678
   Exists: 1
 --- !u!114 &2768145703862363586
 MonoBehaviour:
