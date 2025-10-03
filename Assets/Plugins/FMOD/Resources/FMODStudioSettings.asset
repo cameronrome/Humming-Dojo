@@ -307,9 +307,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Dojo
-    Game.fspro
-  sourceBankPath: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build
+  sourceProjectPath: ../../../Desktop/Dojo/DojoGame/DojoGame.fspro
+  sourceBankPath: ../../../Desktop/Dojo/DojoGame/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -332,10 +331,7 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks:
-  - Ambiences
-  - Music
-  - Player
+  Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

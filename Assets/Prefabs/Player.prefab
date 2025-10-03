@@ -46,18 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footstepEvent:
     Guid:
-      Data1: -288231343
-      Data2: 1152953870
-      Data3: 459501226
-      Data4: -1021565852
-    Path: event:/Player/Footsteps/GrassFoot
-  ForestAmbience:
-    Guid:
-      Data1: -1072158542
-      Data2: 1232565848
-      Data3: 913038517
-      Data4: 1334720417
-    Path: event:/Ambiences/GeneralAmb
+      Data1: -1037378070
+      Data2: 1204239366
+      Data3: -1694994250
+      Data4: -5743453
+    Path: event:/Footsteps/GrassFoot
   rate: 0.3
   player: {fileID: 8853133911125377523}
   controller: {fileID: 5991347961091925982}

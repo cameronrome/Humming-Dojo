@@ -1,26 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8800529138582846103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Ambiences.bank
-  m_EditorClassIdentifier: 
-  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Ambiences.bank
-  Name: Ambiences
-  StudioPath: bank:/Ambiences
-  lastModified: 638950489241001460
-  FileSizes:
-  - Name: Desktop
-    Value: 4841056
-  Exists: 1
---- !u!114 &-7660767760070681577
+--- !u!114 &-9178422059672381980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30,143 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Footsteps/HardFoot
+  m_Name: event:/Footsteps/SnowFoot
   m_EditorClassIdentifier: 
-  Path: event:/Player/Footsteps/HardFoot
+  Path: event:/Footsteps/SnowFoot
   Guid:
-    Data1: -51191985
-    Data2: 1121750784
-    Data3: -1493248638
-    Data4: -445338437
+    Data1: -1081724783
+    Data2: 1161731373
+    Data3: -1418451565
+    Data4: -737060550
   Banks:
-  - {fileID: -2827331401400688810}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 937
---- !u!114 &-7600796157688290043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
-  m_EditorClassIdentifier: 
-  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 638950460556681315
-  FileSizes:
-  - Name: Desktop
-    Value: 15854336
-  Exists: 1
---- !u!114 &-5668278445562807142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Footsteps/GroundFoot
-  m_EditorClassIdentifier: 
-  Path: event:/Player/Footsteps/GroundFoot
-  Guid:
-    Data1: 1236960248
-    Data2: 1088273001
-    Data3: 1039448455
-    Data4: 995762710
-  Banks:
-  - {fileID: -2827331401400688810}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 937
---- !u!114 &-5019052164351616273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Soundtracks/Soundtracks
-  m_EditorClassIdentifier: 
-  Path: event:/Soundtracks/Soundtracks
-  Guid:
-    Data1: -1862746041
-    Data2: 1082607082
-    Data3: -726232394
-    Data4: 1016978562
-  Banks:
-  - {fileID: -7600796157688290043}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 4201903495558604935}
-  - {fileID: -4796506801802193068}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1425498
---- !u!114 &-4796506801802193068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Soundtracks/trackVolume
-  m_EditorClassIdentifier: 
-  Name: trackVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 1
-  ID:
-    data1: 3238876380
-    data2: 549824268
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-4687530410568580967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Footsteps/LandFoot
-  m_EditorClassIdentifier: 
-  Path: event:/Player/Footsteps/LandFoot
-  Guid:
-    Data1: 1425443038
-    Data2: 1115545007
-    Data3: 2121227650
-    Data4: -1739816379
-  Banks:
-  - {fileID: -2827331401400688810}
+  - {fileID: 4722446250694119117}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -174,7 +27,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 703
---- !u!114 &-2827331401400688810
+--- !u!114 &-8810564856247902430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,18 +36,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Player.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps/WaterFoot
   m_EditorClassIdentifier: 
-  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Player.bank
-  Name: Player
-  StudioPath: bank:/Player
-  lastModified: 638950373241722970
-  FileSizes:
-  - Name: Desktop
-    Value: 426688
-  Exists: 1
---- !u!114 &-1255640663076183248
+  Path: event:/Footsteps/WaterFoot
+  Guid:
+    Data1: 759125754
+    Data2: 1215158238
+    Data3: -1110478180
+    Data4: 1879488591
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 937
+--- !u!114 &-6699171080409335797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps/HardFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps/HardFoot
+  Guid:
+    Data1: -1642873776
+    Data2: 1238443872
+    Data3: -114940278
+    Data4: -2003414160
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 937
+--- !u!114 &-6374918752273097203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,20 +95,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Ambiences/GeneralAmb
   Guid:
-    Data1: -1072158542
-    Data2: 1232565848
-    Data3: 913038517
-    Data4: 1334720417
+    Data1: -601452190
+    Data2: 1183860148
+    Data3: -1347068229
+    Data4: -113754730
   Banks:
-  - {fileID: -8800529138582846103}
+  - {fileID: 4722446250694119117}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 133978
---- !u!114 &-1198887219894531869
+  Length: 81500
+--- !u!114 &-6188507863496192497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,157 +118,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambiences/Trees
+  m_Name: event:/Ambiences/Lookout
   m_EditorClassIdentifier: 
-  Path: event:/Ambiences/Trees
+  Path: event:/Ambiences/Lookout
   Guid:
-    Data1: -484263513
-    Data2: 1166228932
-    Data3: -1905787767
-    Data4: 1669055730
+    Data1: 374390803
+    Data2: 1315972114
+    Data3: 1267959997
+    Data4: -2117395149
   Banks:
-  - {fileID: -8800529138582846103}
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2099787739833640268}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 144000
+--- !u!114 &-5352741790203585448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/WaterFall
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/WaterFall
+  Guid:
+    Data1: 461957920
+    Data2: 1136622307
+    Data3: 610584251
+    Data4: -854554077
+  Banks:
+  - {fileID: 4722446250694119117}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 106010
---- !u!114 &-651168650537272564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Footsteps/WaterFoot
-  m_EditorClassIdentifier: 
-  Path: event:/Player/Footsteps/WaterFoot
-  Guid:
-    Data1: -888447699
-    Data2: 1198491819
-    Data3: -566703475
-    Data4: 57544005
-  Banks:
-  - {fileID: -2827331401400688810}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 937
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 1031185513706669166}
-  - {fileID: -8800529138582846103}
-  - {fileID: 915117857148169727}
-  - {fileID: -2827331401400688810}
-  - {fileID: -7600796157688290043}
-  EditorEvents:
-  - {fileID: -1255640663076183248}
-  - {fileID: 8604042412863925370}
-  - {fileID: -651168650537272564}
-  - {fileID: -7660767760070681577}
-  - {fileID: 9080040939895593822}
-  - {fileID: 478607684072985983}
-  - {fileID: 3895164927216238868}
-  - {fileID: 3767537338021877995}
-  - {fileID: -4687530410568580967}
-  - {fileID: -5668278445562807142}
-  - {fileID: -5019052164351616273}
-  - {fileID: 3823745891672839037}
-  - {fileID: -1198887219894531869}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 915117857148169727}
-  StringsBanks:
-  - {fileID: 1031185513706669166}
-  cacheTime: 638950489241043795
-  cacheVersion: 131632
---- !u!114 &478607684072985983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Footsteps/LeavesFoot
-  m_EditorClassIdentifier: 
-  Path: event:/Player/Footsteps/LeavesFoot
-  Guid:
-    Data1: 298802039
-    Data2: 1300823555
-    Data3: -1974319205
-    Data4: -1763329479
-  Banks:
-  - {fileID: -2827331401400688810}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 703
---- !u!114 &915117857148169727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638950489241040834
-  FileSizes:
-  - Name: Desktop
-    Value: 1036
-  Exists: 1
---- !u!114 &1031185513706669166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638950489241043795
-  FileSizes:
-  - Name: Desktop
-    Value: 1678
-  Exists: 1
---- !u!114 &2768145703862363586
+  Length: 60000
+--- !u!114 &-4979739710304148378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,8 +181,8 @@ MonoBehaviour:
   Max: 6
   Default: 0
   ID:
-    data1: 2693332267
-    data2: 3938975925
+    data1: 2974079766
+    data2: 4127435831
   Type: 2
   IsGlobal: 0
   Labels:
@@ -412,89 +194,7 @@ MonoBehaviour:
   - Snow
   - Water
   Exists: 1
---- !u!114 &3767537338021877995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Footsteps/SnowFoot
-  m_EditorClassIdentifier: 
-  Path: event:/Player/Footsteps/SnowFoot
-  Guid:
-    Data1: 1478560665
-    Data2: 1301714611
-    Data3: -1561021779
-    Data4: -246342984
-  Banks:
-  - {fileID: -2827331401400688810}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 703
---- !u!114 &3823745891672839037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Soundtracks/Soundtrack01
-  m_EditorClassIdentifier: 
-  Path: event:/Soundtracks/Soundtrack01
-  Guid:
-    Data1: 769553013
-    Data2: 1135947451
-    Data3: -1115081539
-    Data4: -550396011
-  Banks:
-  - {fileID: -7600796157688290043}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 239797
---- !u!114 &3895164927216238868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Footsteps/Footstep
-  m_EditorClassIdentifier: 
-  Path: event:/Player/Footsteps/Footstep
-  Guid:
-    Data1: 918964376
-    Data2: 1102944067
-    Data3: -1743895664
-    Data4: 1291473561
-  Banks:
-  - {fileID: -2827331401400688810}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 2768145703862363586}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &4201903495558604935
+--- !u!114 &-3665398828703709814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -504,7 +204,214 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Soundtracks/trackState
+  m_Name: parameter:/WaterDome/waterDomeState
+  m_EditorClassIdentifier: 
+  Name: waterDomeState
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 272602234
+    data2: 2994938672
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Active
+  - Inactive
+  Exists: 1
+--- !u!114 &-3320632561067938062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps/GrassFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps/GrassFoot
+  Guid:
+    Data1: -1037378070
+    Data2: 1204239366
+    Data3: -1694994250
+    Data4: -5743453
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 703
+--- !u!114 &-2454470899237341165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps/Footstep
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps/Footstep
+  Guid:
+    Data1: 1486528297
+    Data2: 1285928080
+    Data3: -408763719
+    Data4: 343401856
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -4979739710304148378}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2099787739833640268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Lookout/TimeofDay
+  m_EditorClassIdentifier: 
+  Name: TimeofDay
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 718437229
+    data2: 2927637907
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-1932402652015213705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/Fireflies
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/Fireflies
+  Guid:
+    Data1: 577380505
+    Data2: 1111077308
+    Data3: 1749239439
+    Data4: 732569437
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 64029
+--- !u!114 &-1262744725002593279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps/LandFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps/LandFoot
+  Guid:
+    Data1: 125869052
+    Data2: 1330194147
+    Data3: 1942605208
+    Data4: 703004942
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 703
+--- !u!114 &-966878422645609461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../Desktop/Dojo/DojoGame/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638950896850671646
+  FileSizes:
+  - Name: Desktop
+    Value: 2116
+  Exists: 1
+--- !u!114 &-921113523592749956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/WaterFlow
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/WaterFlow
+  Guid:
+    Data1: 1327141146
+    Data2: 1293538260
+    Data3: 1463350681
+    Data4: 736624936
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5096331085798629966}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 60000
+--- !u!114 &-740034118045479479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Soundtrack/trackState
   m_EditorClassIdentifier: 
   Name: trackState
   StudioPath: 
@@ -512,12 +419,12 @@ MonoBehaviour:
   Max: 11
   Default: 0
   ID:
-    data1: 17589459
-    data2: 63396638
+    data1: 229716151
+    data2: 3169058148
   Type: 2
   IsGlobal: 0
   Labels:
-  - Forest
+  - Human
   - Track02
   - Track03
   - Underwater
@@ -530,7 +437,53 @@ MonoBehaviour:
   - Minigame
   - StopTrack
   Exists: 1
---- !u!114 &8604042412863925370
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -966878422645609461}
+  - {fileID: 4722446250694119117}
+  EditorEvents:
+  - {fileID: -6188507863496192497}
+  - {fileID: -921113523592749956}
+  - {fileID: 1611024333539877036}
+  - {fileID: -5352741790203585448}
+  - {fileID: -2454470899237341165}
+  - {fileID: 6989976880911591324}
+  - {fileID: 8085661921837230524}
+  - {fileID: 1857574337371291529}
+  - {fileID: -6699171080409335797}
+  - {fileID: -6374918752273097203}
+  - {fileID: 4902297933469434715}
+  - {fileID: 3944084245726592484}
+  - {fileID: -9178422059672381980}
+  - {fileID: 5550259027287201255}
+  - {fileID: -1932402652015213705}
+  - {fileID: 5422248642420626908}
+  - {fileID: 8607487540675607692}
+  - {fileID: 8891624999739271487}
+  - {fileID: 5419252336348094675}
+  - {fileID: -3320632561067938062}
+  - {fileID: 4938690220464086771}
+  - {fileID: -8810564856247902430}
+  - {fileID: -1262744725002593279}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 4722446250694119117}
+  StringsBanks:
+  - {fileID: -966878422645609461}
+  cacheTime: 638950896850671646
+  cacheVersion: 131632
+--- !u!114 &1611024333539877036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -540,16 +493,70 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambiences/Water
+  m_Name: event:/Ambiences/WaterFallAmb
   m_EditorClassIdentifier: 
-  Path: event:/Ambiences/Water
+  Path: event:/Ambiences/WaterFallAmb
   Guid:
-    Data1: -1941450853
-    Data2: 1176753990
-    Data3: 1297530536
-    Data4: 855817550
+    Data1: -1566499557
+    Data2: 1082165446
+    Data3: -433907531
+    Data4: -272744675
   Banks:
-  - {fileID: -8800529138582846103}
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 44444
+--- !u!114 &1857574337371291529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps/GroundFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps/GroundFoot
+  Guid:
+    Data1: 645867855
+    Data2: 1148820908
+    Data3: -968330875
+    Data4: -1152445651
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 937
+--- !u!114 &3944084245726592484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/CalmRiver
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/CalmRiver
+  Guid:
+    Data1: 385200514
+    Data2: 1321029462
+    Data3: 727560589
+    Data4: 961916499
+  Banks:
+  - {fileID: 4722446250694119117}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -557,7 +564,51 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 90000
---- !u!114 &9080040939895593822
+--- !u!114 &4325097486503706914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Soundtrack/trackVolume
+  m_EditorClassIdentifier: 
+  Name: trackVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 244694553
+    data2: 3395965910
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &4722446250694119117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../Desktop/Dojo/DojoGame/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638950896850637738
+  FileSizes:
+  - Name: Desktop
+    Value: 29063776
+  Exists: 1
+--- !u!114 &4902297933469434715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -567,16 +618,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player/Footsteps/GrassFoot
+  m_Name: event:/Ambiences/WaterDome
   m_EditorClassIdentifier: 
-  Path: event:/Player/Footsteps/GrassFoot
+  Path: event:/Ambiences/WaterDome
   Guid:
-    Data1: -288231343
-    Data2: 1152953870
-    Data3: 459501226
-    Data4: -1021565852
+    Data1: 1398863209
+    Data2: 1213078332
+    Data3: -1084210763
+    Data4: -1811301196
   Banks:
-  - {fileID: -2827331401400688810}
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3665398828703709814}
+  - {fileID: 5915921840779143701}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 32000
+--- !u!114 &4938690220464086771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps/LeavesFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps/LeavesFoot
+  Guid:
+    Data1: 320524788
+    Data2: 1306371399
+    Data3: -186812788
+    Data4: 376366203
+  Banks:
+  - {fileID: 4722446250694119117}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -584,3 +664,247 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 703
+--- !u!114 &5096331085798629966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/WaterFlow/waterSelector
+  m_EditorClassIdentifier: 
+  Name: waterSelector
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 111208288
+    data2: 2984956357
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Soft
+  - Mid
+  - Hard
+  Exists: 1
+--- !u!114 &5419252336348094675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/IceCreamAmb
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/IceCreamAmb
+  Guid:
+    Data1: -902520637
+    Data2: 1241969618
+    Data3: -205998957
+    Data4: 206866451
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 124000
+--- !u!114 &5422248642420626908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Soundtrack/Soundtrack01
+  m_EditorClassIdentifier: 
+  Path: event:/Soundtrack/Soundtrack01
+  Guid:
+    Data1: 276836775
+    Data2: 1218209723
+    Data3: 1606481829
+    Data4: 1618997283
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 239999
+--- !u!114 &5550259027287201255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/PuzzleAmb
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/PuzzleAmb
+  Guid:
+    Data1: 451508113
+    Data2: 1314896241
+    Data3: 1107245966
+    Data4: 929903291
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 74000
+--- !u!114 &5915921840779143701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/WaterDome/waterDomeProx
+  m_EditorClassIdentifier: 
+  Name: waterDomeProx
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 2254796016
+    data2: 2157764644
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Near
+  - Far
+  Exists: 1
+--- !u!114 &6989976880911591324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/ForestAmb
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/ForestAmb
+  Guid:
+    Data1: 762238540
+    Data2: 1236678903
+    Data3: 1120116114
+    Data4: -1239560144
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 120000
+--- !u!114 &8085661921837230524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Soundtrack/Soundtrack
+  m_EditorClassIdentifier: 
+  Path: event:/Soundtrack/Soundtrack
+  Guid:
+    Data1: 128082765
+    Data2: 1092175438
+    Data3: 1238078092
+    Data4: 997977087
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4325097486503706914}
+  - {fileID: -740034118045479479}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1425498
+--- !u!114 &8607487540675607692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/MainCaveAmb
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/MainCaveAmb
+  Guid:
+    Data1: -2082634329
+    Data2: 1085891055
+    Data3: -1336796523
+    Data4: 946946357
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 74444
+--- !u!114 &8891624999739271487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/UnderwaterAmb
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/UnderwaterAmb
+  Guid:
+    Data1: -58465876
+    Data2: 1203743765
+    Data3: -354882909
+    Data4: 1461563843
+  Banks:
+  - {fileID: 4722446250694119117}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 187582
