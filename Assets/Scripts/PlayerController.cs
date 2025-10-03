@@ -14,14 +14,14 @@ public class PlayerController : MonoBehaviour
 
     private bool canMove = true;
 
-    
+
     public void OnMove(InputAction.CallbackContext context)
     {
         if (canMove)
         {
             move = context.ReadValue<Vector2>();
         }
-        
+
 
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
             animator.SetBool("Running", true);
             animator.SetBool("Idle", false);
-        } 
+        }
         else
         {
             animator.SetBool("Running", false);
@@ -67,4 +67,10 @@ public class PlayerController : MonoBehaviour
         move = Vector2.zero;
         animator.SetBool("Running", false);
     }
+public bool IsWalking
+{
+    get { return canMove && move.sqrMagnitude > 0.01f; }
 }
+
+}
+

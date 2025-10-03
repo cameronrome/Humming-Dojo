@@ -1,0 +1,419 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8800529138582846103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambiences.bank
+  m_EditorClassIdentifier: 
+  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Ambiences.bank
+  Name: Ambiences
+  StudioPath: bank:/Ambiences
+  lastModified: 638950425190809021
+  FileSizes:
+  - Name: Desktop
+    Value: 3431872
+  Exists: 1
+--- !u!114 &-7660767760070681577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps/HardFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps/HardFoot
+  Guid:
+    Data1: -51191985
+    Data2: 1121750784
+    Data3: -1493248638
+    Data4: -445338437
+  Banks:
+  - {fileID: -2827331401400688810}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 937
+--- !u!114 &-5668278445562807142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps/GroundFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps/GroundFoot
+  Guid:
+    Data1: 1236960248
+    Data2: 1088273001
+    Data3: 1039448455
+    Data4: 995762710
+  Banks:
+  - {fileID: -2827331401400688810}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 937
+--- !u!114 &-4687530410568580967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps/LandFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps/LandFoot
+  Guid:
+    Data1: 1425443038
+    Data2: 1115545007
+    Data3: 2121227650
+    Data4: -1739816379
+  Banks:
+  - {fileID: -2827331401400688810}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 703
+--- !u!114 &-2827331401400688810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Player.bank
+  m_EditorClassIdentifier: 
+  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Player.bank
+  Name: Player
+  StudioPath: bank:/Player
+  lastModified: 638950373241722970
+  FileSizes:
+  - Name: Desktop
+    Value: 426688
+  Exists: 1
+--- !u!114 &-1255640663076183248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/GeneralAmb
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/GeneralAmb
+  Guid:
+    Data1: -1072158542
+    Data2: 1232565848
+    Data3: 913038517
+    Data4: 1334720417
+  Banks:
+  - {fileID: -8800529138582846103}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 133978
+--- !u!114 &-651168650537272564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps/WaterFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps/WaterFoot
+  Guid:
+    Data1: -888447699
+    Data2: 1198491819
+    Data3: -566703475
+    Data4: 57544005
+  Banks:
+  - {fileID: -2827331401400688810}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 937
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 1031185513706669166}
+  - {fileID: -8800529138582846103}
+  - {fileID: 915117857148169727}
+  - {fileID: -2827331401400688810}
+  EditorEvents:
+  - {fileID: -1255640663076183248}
+  - {fileID: 8604042412863925370}
+  - {fileID: -651168650537272564}
+  - {fileID: -7660767760070681577}
+  - {fileID: 9080040939895593822}
+  - {fileID: 478607684072985983}
+  - {fileID: 3895164927216238868}
+  - {fileID: 3767537338021877995}
+  - {fileID: -4687530410568580967}
+  - {fileID: -5668278445562807142}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 915117857148169727}
+  StringsBanks:
+  - {fileID: 1031185513706669166}
+  cacheTime: 638950425190809021
+  cacheVersion: 131632
+--- !u!114 &478607684072985983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps/LeavesFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps/LeavesFoot
+  Guid:
+    Data1: 298802039
+    Data2: 1300823555
+    Data3: -1974319205
+    Data4: -1763329479
+  Banks:
+  - {fileID: -2827331401400688810}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 703
+--- !u!114 &915117857148169727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638950373240574148
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
+--- !u!114 &1031185513706669166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../astrapuff/Assets/Prototype/SoundSystem/FmodProject/Dojo Game/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638950373240578848
+  FileSizes:
+  - Name: Desktop
+    Value: 1340
+  Exists: 1
+--- !u!114 &2768145703862363586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footstep/footstepType
+  m_EditorClassIdentifier: 
+  Name: footstepType
+  StudioPath: 
+  Min: 0
+  Max: 6
+  Default: 0
+  ID:
+    data1: 2693332267
+    data2: 3938975925
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Grass
+  - Leaves
+  - Ground
+  - Land
+  - Hard
+  - Snow
+  - Water
+  Exists: 1
+--- !u!114 &3767537338021877995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps/SnowFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps/SnowFoot
+  Guid:
+    Data1: 1478560665
+    Data2: 1301714611
+    Data3: -1561021779
+    Data4: -246342984
+  Banks:
+  - {fileID: -2827331401400688810}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 703
+--- !u!114 &3895164927216238868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps/Footstep
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps/Footstep
+  Guid:
+    Data1: 918964376
+    Data2: 1102944067
+    Data3: -1743895664
+    Data4: 1291473561
+  Banks:
+  - {fileID: -2827331401400688810}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2768145703862363586}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8604042412863925370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiences/Water
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiences/Water
+  Guid:
+    Data1: -1941450853
+    Data2: 1176753990
+    Data3: 1297530536
+    Data4: 855817550
+  Banks:
+  - {fileID: -8800529138582846103}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 90000
+--- !u!114 &9080040939895593822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps/GrassFoot
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps/GrassFoot
+  Guid:
+    Data1: -288231343
+    Data2: 1152953870
+    Data3: 459501226
+    Data4: -1021565852
+  Banks:
+  - {fileID: -2827331401400688810}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 703
