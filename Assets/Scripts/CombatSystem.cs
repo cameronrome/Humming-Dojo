@@ -31,6 +31,8 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private GameObject gemUI;
 
     [SerializeField] private HumDial humDial;
+    [SerializeField] private HumDial humDial2;
+
 
     [SerializeField] private CameraFollow cameraFollow;
     [SerializeField] private PlayerController playerController;
@@ -109,19 +111,19 @@ public class CombatSystem : MonoBehaviour
 
             int keyNum = GetRandomKey(); 
 
-            humDial.SetKeys(new List<int>() { keyNum } );
-            humDial.Open();
+            humDial2.SetKeys(new List<int>() { keyNum } );
+            humDial2.Open();
 
             battle_text.text = "Hum the note to invoke a small attack.";
 
             UnityAction handler = () => AttackHelper(oneNoteAttackDMG, oneNoteAttackBRTH);
-            humDial.OnHumPass += handler; //use move on enemy
+            humDial2.OnHumPass += handler; //use move on enemy
 
             // wait until hum passes
             yield return new WaitUntil(() => humPassed);
 
             battle_text.text = "Your humming did light damage to the enemy.";
-            humDial.OnHumPass -= handler;
+            humDial2.OnHumPass -= handler;
         }
         yield return new WaitForSeconds(3f);
     }
