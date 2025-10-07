@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class StartBreathing : MonoBehaviour, Interactable
 {
-    [SerializeField] private CameraFollow cameraFollow;
-    //[SerializeField] PlayerController playerController;
-    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] private CameraManager cameraManager;
+    [SerializeField] private PlayerMovement playerMovement;
 
     [SerializeField] private GameObject breathDial;
 
@@ -16,10 +15,9 @@ public class StartBreathing : MonoBehaviour, Interactable
         if (!interacting) //hit interact once
         {
             interacting = true;
-            //playerController.DisableMovement(); //for original movement controller
             playerMovement.DisableMovement(); //for Jerry's new movement controller
             breathDial.SetActive(true);
-            cameraFollow.StartBreathingZoom(cameraOffset);
+            cameraManager.SwitchToZoomInCam();
 
 
         }
@@ -29,7 +27,7 @@ public class StartBreathing : MonoBehaviour, Interactable
             //playerController.EnableMovement(); //for original movement controller
             playerMovement.EnableMovement(); //for Jerry's new movement controller
             breathDial.SetActive(false);
-            cameraFollow.StopBreathingZoom();
+            cameraManager.SwitchToBirdCam();
 
         }
     }
