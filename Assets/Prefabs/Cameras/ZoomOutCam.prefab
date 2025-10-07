@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1168284600004706115
+--- !u!1 &1935891406561118708
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5747456796891129797}
-  - component: {fileID: 4624796997006022652}
-  - component: {fileID: 4849835834297299933}
-  - component: {fileID: 6843464502637697824}
-  - component: {fileID: 5428304484719667783}
+  - component: {fileID: 3009884876125175386}
+  - component: {fileID: 9169064763935799528}
+  - component: {fileID: 3721648008069802789}
+  - component: {fileID: 3120063157008563088}
+  - component: {fileID: 749742300750122892}
   m_Layer: 0
-  m_Name: ZoomInCam
+  m_Name: ZoomOutCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5747456796891129797
+--- !u!4 &3009884876125175386
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168284600004706115}
+  m_GameObject: {fileID: 1935891406561118708}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4331888, y: 0.000000060062874, z: -0.000000028867715, w: 0.90130323}
-  m_LocalPosition: {x: 132.9, y: 6.8, z: 101.3}
+  m_LocalRotation: {x: 0.42415547, y: 0.000000001319046, z: -6.17808e-10, w: 0.9055894}
+  m_LocalPosition: {x: 132.9, y: 14.3, z: 94.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4624796997006022652
+--- !u!114 &9169064763935799528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168284600004706115}
+  m_GameObject: {fileID: 1935891406561118708}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority:
     Enabled: 1
-    m_Value: 20
+    m_Value: 4
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -78,19 +78,19 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &4849835834297299933
+--- !u!114 &3721648008069802789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168284600004706115}
+  m_GameObject: {fileID: 1935891406561118708}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetOffset: {x: 0, y: 0.5, z: 0}
+  TargetOffset: {x: 0, y: 0, z: 0}
   TrackerSettings:
     BindingMode: 4
     PositionDamping: {x: 1, y: 1, z: 1}
@@ -101,13 +101,13 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 3.6
-      Height: 8
+      Radius: 5
+      Height: 20
     Center:
-      Radius: 3.6
-      Height: 4
+      Radius: 10
+      Height: 12
     Bottom:
-      Radius: 2.4
+      Radius: 5
       Height: 0
     SplineCurvature: 0.5
   RecenteringTarget: 2
@@ -141,13 +141,13 @@ MonoBehaviour:
       Wait: 1
       Time: 2
     Restrictions: 0
---- !u!114 &6843464502637697824
+--- !u!114 &3120063157008563088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168284600004706115}
+  m_GameObject: {fileID: 1935891406561118708}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
@@ -164,19 +164,19 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.7, y: 0.7}
+  Damping: {x: 0.5, y: 0.5}
   Lookahead:
     Enabled: 0
     Time: 0
     Smoothing: 0
     IgnoreY: 0
---- !u!114 &5428304484719667783
+--- !u!114 &749742300750122892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168284600004706115}
+  m_GameObject: {fileID: 1935891406561118708}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_ControllerManager:
     Controllers:
     - Name: Look Orbit X
-      Owner: {fileID: 4849835834297299933}
+      Owner: {fileID: 3721648008069802789}
       Enabled: 1
       Input:
         InputAction: {fileID: -2883446548794882562, guid: 3de58e3ad2304b14289f53f444e350ee, type: 3}
@@ -201,7 +201,7 @@ MonoBehaviour:
         AccelTime: 0.2
         DecelTime: 0.2
     - Name: Look Orbit Y
-      Owner: {fileID: 4849835834297299933}
+      Owner: {fileID: 3721648008069802789}
       Enabled: 0
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
@@ -214,7 +214,7 @@ MonoBehaviour:
         AccelTime: 0.2
         DecelTime: 0.2
     - Name: Orbit Scale
-      Owner: {fileID: 4849835834297299933}
+      Owner: {fileID: 3721648008069802789}
       Enabled: 0
       Input:
         InputAction: {fileID: -423771258819551211, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
