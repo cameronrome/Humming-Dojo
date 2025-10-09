@@ -23,7 +23,7 @@ public class AudioPitchEstimator : MonoBehaviour
     public float smoothingWidth = 500;
 
     [Tooltip("Threshold to judge silence or not\nLarger the value, stricter the judgment.")]
-    public float thresholdSRH = 6;
+    public float thresholdSRH = 0.05f; //6;
 
     const int spectrumSize = 1024;
     const int outputResolution = 200;
@@ -32,8 +32,15 @@ public class AudioPitchEstimator : MonoBehaviour
     float[] specCum = new float[spectrumSize];
     float[] specRes = new float[spectrumSize];
     float[] srh = new float[outputResolution];
+    public float[] noise_spec = new float[spectrumSize];
 
     public List<float> SRH => new List<float>(srh);
+    public List<float> Spec => new List<float>(spectrum);
+
+    public float threshold = 0.1f;
+
+    // public Vector3[] noise_lines = new Vector3[1024];
+    // public Vector3[] denoised_lines = new Vector3[1024];
 
     public float Estimate(AudioSource audioSource)
     {
@@ -44,7 +51,7 @@ public class AudioPitchEstimator : MonoBehaviour
 
         for (int i = 0; i < spectrumSize; i++)
         {
-            specRaw[i] = Mathf.Log(spectrum[i] + 1e-9f);
+            specRaw[i] = Mathf.Log(spectrum[i]+ 1e-9f) - Mathf.Log(noise_spec[i] + 1e-9f);
         }
 
         specCum[0] = 0;
