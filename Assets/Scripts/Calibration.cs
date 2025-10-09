@@ -1,9 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using System;
 using System.Collections;
 
 public class Calibration : MonoBehaviour {
+    public HumDial dial;
+    private AudioSource audioSource;
+    private string micName;
+    private AudioClip micClip;
+    public AudioPitchEstimator estimator;
+    public AudioMixerGroup micSilentGroup;
+
 	public GameObject calibrationBtn;
     private Image calibrationBgImg; 
     public Sprite startSprite; 
@@ -17,7 +25,6 @@ public class Calibration : MonoBehaviour {
     
     public GameObject micIcon;
     public GameObject micPulse;
-    private RectTransform micPulseRT;
 
     private bool record_flag;
     private bool reset_flag;
@@ -27,16 +34,29 @@ public class Calibration : MonoBehaviour {
     private double pulseMid;
     private double pulseHR;
 
-    public AudioSource audioSource;
-    public AudioPitchEstimator estimator;
-
-    private float estimateRate = 30.0f;
     const int spectrumSize = 1024;
     private int record_ct;
 
+    private float[] cur_noise_spec = new float[spectrumSize];
     // public Vector3[] noise_lines = new Vector3[1024];
 
 	void Start () {
+        if (dial == null || dial.micAudioSource == null) {
+            micName = Microphone.devices[0];
+            Debug.Log(micName);
+            micClip = Microphone.Start(micName, true, 1, 44100);
+
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = micClip;
+            audioSource.loop = true;
+            audioSource.outputAudioMixerGroup = micSilentGroup;
+
+            while (!(Microphone.GetPosition(micName) > 0)) { }
+            audioSource.Play();
+        } else {
+            audioSource = dial.micAudioSource;
+        }
+        
 		Button cBtn = calibrationBtn.GetComponent<Button>();
 		cBtn.onClick.AddListener(Calibrate);
 
@@ -56,16 +76,16 @@ public class Calibration : MonoBehaviour {
         
         micIcon.SetActive(false);
         micPulse.SetActive(false);
-        //micPulseRT = micPulse.
 
         record_flag = false;
         reset_flag = false;
         pulseMid = (pulseMax + pulseMin) / 2;
         pulseHR = (pulseMax - pulseMin) / 2;
 
-        // for (int i = 0; i < spectrumSize; i++) {
-        //     estimator.noise_spec[i] = 0f;
-        // }
+        for (int i = 0; i < spectrumSize; i++) {
+            estimator.noise_spec[i] = 0f;
+            cur_noise_spec[i] = 0f;
+        }
 	}
 
 	void Calibrate(){
@@ -81,9 +101,10 @@ public class Calibration : MonoBehaviour {
             micIcon.SetActive(true);
             micPulse.SetActive(true);
 
-            // for (int i = 0; i < spectrumSize; i++) {
-            //     estimator.noise_spec[i] = 0f;
-            // }
+            for (int i = 0; i < spectrumSize; i++) {
+                //estimator.noise_spec[i] = 0f;
+                cur_noise_spec[i] = 0f;
+            }
         } 
         // Stop Recording
         else { 
@@ -95,15 +116,22 @@ public class Calibration : MonoBehaviour {
 
             micIcon.SetActive(false);
             micPulse.SetActive(false);
-        }
 
-        //Debug.Log("btn click " + record_flag);
+            for (int i = 0; i < spectrumSize; i++) {
+                estimator.noise_spec[i] = cur_noise_spec[i];
+            }
+        }
 	}
 
     void Reset() {
         reset_flag = !reset_flag;
         rBtn.enabled = reset_flag;
         resetBgImg.sprite = (reset_flag) ? resetActiveSprite : resetInactiveSprite;
+
+        for (int i = 0; i < spectrumSize; i++) {
+            estimator.noise_spec[i] = 0f;
+            cur_noise_spec[i] = 0f;
+        }
     }
 
     void Update()
@@ -113,34 +141,32 @@ public class Calibration : MonoBehaviour {
             record_ct = record_ct + 1;
         
             float resize = (float) (pulseMid + (2 * pulseHR / Math.PI) * Math.Acos(Math.Cos(Math.PI * record_ct / pulsePeriod)) - pulseHR);
-            
             micPulse.GetComponent<RectTransform>().sizeDelta = new Vector2(resize, resize);
 
             // estimate the fundamental frequency
             var frequency = estimator.Estimate(audioSource);
-            // var spectrum = estimator.Spec;
-            // for (int i = 0; i < spectrumSize; i++)
-            // {
-            //     float prev_noise = estimator.noise_spec[i];
-            //     estimator.noise_spec[i] = (prev_noise * (record_ct - 1) + spectrum[i]) / record_ct;
-            // }
-
-            // for (int i = 0; i < spectrumSize; i++)
-            // {
-            //     noise_lines[i] = new Vector3(0.15f * Mathf.Log((float)i), 
-            //             0.02f * (Mathf.Log(estimator.noise_spec[i]) + 19.5f), -0.1f);
-            // }
-        
+            var spectrum = estimator.Spec;
+            for (int i = 0; i < spectrumSize; i++)
+            {
+                float prev_noise = cur_noise_spec[i];
+                cur_noise_spec[i] = (prev_noise * (record_ct - 1) + spectrum[i]) / record_ct;
+            }
         }
         // Not Recording 
         else { 
-            record_ct = 0;
-            // Debug.Log(reset_flag);            
+            record_ct = 0;          
         }
     }
 
+    // // For checking noise spectrum
     // void OnDrawGizmos()
     // {
+    //     for (int i = 0; i < spectrumSize; i++)
+    //     {
+    //         noise_lines[i] = new Vector3(0.15f * Mathf.Log((float)i), 
+    //                 0.02f * (Mathf.Log(estimator.noise_spec[i]) + 19.5f), -0.1f);
+    //     }
+
     //     if (noise_lines.Length > 0)
     //     {
     //         for (int i = 1; i < noise_lines.Length; i++)

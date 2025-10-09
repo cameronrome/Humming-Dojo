@@ -3064,6 +3064,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2351650912419824249, guid: 39a202e5fcc6df24ea4546b65403ce33, type: 3}
   m_PrefabInstance: {fileID: 174337532}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &174337534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1503312871247627385, guid: 39a202e5fcc6df24ea4546b65403ce33, type: 3}
+  m_PrefabInstance: {fileID: 174337532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550326886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ebc930702e0ae48b2323e559a6ddf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &177493610 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8909360131748202598, guid: 651a8bfd0b08396428e3f3400c8b7310, type: 3}
@@ -4220,6 +4231,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5207948468692917713, guid: 4a92729b6bef674428a3344a6b2fe168, type: 3}
+      propertyPath: dial
+      value: 
+      objectReference: {fileID: 1535613385}
+    - target: {fileID: 5207948468692917713, guid: 4a92729b6bef674428a3344a6b2fe168, type: 3}
+      propertyPath: estimator
+      value: 
+      objectReference: {fileID: 174337534}
+    - target: {fileID: 5207948468692917713, guid: 4a92729b6bef674428a3344a6b2fe168, type: 3}
+      propertyPath: microphone
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207948468692917713, guid: 4a92729b6bef674428a3344a6b2fe168, type: 3}
+      propertyPath: micSilentGroup
+      value: 
+      objectReference: {fileID: -6774622242765485675, guid: 2a492a0f872c91244b7b3cc144a623ac, type: 2}
     - target: {fileID: 5207948468692917713, guid: 4a92729b6bef674428a3344a6b2fe168, type: 3}
       propertyPath: resetInactiveSprite
       value: 
