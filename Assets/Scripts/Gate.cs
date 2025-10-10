@@ -48,6 +48,7 @@ public class Gate : MonoBehaviour
 
         animator.SetBool("Opened", true);
         opened = true;
+        HideHumDial();
     }
 
     private void Start()
@@ -58,5 +59,10 @@ public class Gate : MonoBehaviour
     public string GetDirection()
     {
         return direction;
+    }
+
+    public bool isOpen()
+    {
+        return opened;
     }
 }

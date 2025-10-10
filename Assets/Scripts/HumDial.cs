@@ -23,13 +23,13 @@ public class HumDial : MonoBehaviour
 
     private List<GameObject> dotTrail;
     private AudioClip micClip;
-    private AudioSource micAudioSource;
+    public AudioSource micAudioSource;
     private AudioPitchEstimator pitchEstimator;
     public AudioMixerGroup micSilentGroup;
     private string micName;
     private float prevAngle;
     private float silentTimer;
-    private float silentDur = 1.5f;
+    private float silentDur = 0.25f;
 
     private int keyIdx;
     private float keyTimer;
