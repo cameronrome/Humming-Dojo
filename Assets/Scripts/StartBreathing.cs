@@ -3,7 +3,7 @@ using UnityEngine;
 public class StartBreathing : MonoBehaviour, Interactable
 {
     [SerializeField] private CameraManager cameraManager;
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Player playerMovement;
 
     [SerializeField] private GameObject breathDial;
 

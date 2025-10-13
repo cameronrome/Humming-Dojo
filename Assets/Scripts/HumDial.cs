@@ -68,6 +68,14 @@ public class HumDial : MonoBehaviour
     {
         gameObject.SetActive(false);
         keyIdx = 0;
+
+        foreach (Image tab in tabs)
+            tab.color = new Color(tab.color.r, tab.color.g, tab.color.b, 0.8f);
+    }
+
+    public void SetKeyDuration(float time)
+    {
+        keyDur = time;
     }
 
     private IEnumerator promptTab(int idx)
@@ -205,8 +213,9 @@ public class HumDial : MonoBehaviour
                     {
                         wave.transform.localPosition = new Vector3(0, -150, 0);
                         timer.fillAmount = 0;
-                        StartCoroutine(resetTabs());
                         OnHumPass?.Invoke();
+                        StartCoroutine(resetTabs());
+                        Invoke(nameof(Close), fadeDur);
                     }
                 }
             }
@@ -255,8 +264,4 @@ public class HumDial : MonoBehaviour
         prevAngle = targetAngle;
     }
 
-    public void setKeyDuration(float time)
-    {
-        keyDur = time;
-    }
 }

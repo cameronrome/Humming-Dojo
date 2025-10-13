@@ -4,8 +4,8 @@ public class StartHumming : MonoBehaviour, Interactable
 {
     //[SerializeField] CameraFollow cameraFollow;
     //[SerializeField] PlayerController playerController;
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private Gate gate;
+    [SerializeField] private Player playerMovement;
+    [SerializeField] private GateOld gate;
     [SerializeField] private CameraManager cameraManager;
 
     private bool interacting = false;
