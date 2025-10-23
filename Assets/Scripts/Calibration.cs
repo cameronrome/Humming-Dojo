@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using System;
 using System.Collections;
+using TMPro;
 
 public class Calibration : MonoBehaviour {
     public HumDial dial;
@@ -25,14 +26,24 @@ public class Calibration : MonoBehaviour {
     
     public GameObject micIcon;
     public GameObject micPulse;
+    public GameObject descriptionText;
+    private Image descBgImg; 
+    public Sprite infoSprite; 
+    public Sprite recordSprite; 
 
     private bool record_flag;
     private bool reset_flag;
-    private int pulsePeriod = 250;
-    private double pulseMin = 22;
-    private double pulseMax = 25;
+    private int pulsePeriod = 180;
+    private double pulseMin = 80;
+    private double pulseMax = 90;
     private double pulseMid;
     private double pulseHR;
+
+    public GameObject countdownText;
+    private DateTime previousFrameTime;
+    private DateTime currentFrameTime;
+    private TimeSpan timeElapsed = TimeSpan.Zero;
+    private int calibrationPeriod = 5;
 
     const int spectrumSize = 1024;
     private int record_ct;
@@ -74,8 +85,14 @@ public class Calibration : MonoBehaviour {
             resetBgImg.sprite = resetInactiveSprite;        
         }
         
-        micIcon.SetActive(false);
-        micPulse.SetActive(false);
+        //micIcon.SetActive(false);
+        //micPulse.SetActive(false);
+        descBgImg = descriptionText.GetComponent<Image>();
+        if (descBgImg != null && infoSprite != null && recordSprite != null) {
+            descBgImg.sprite = infoSprite;        
+        }
+
+        countdownText.SetActive(false);
 
         record_flag = false;
         reset_flag = false;
@@ -95,11 +112,24 @@ public class Calibration : MonoBehaviour {
         if (record_flag) { 
             calibrationBgImg.sprite = stopSprite;
 
+            float width = calibrationBtn.GetComponent<RectTransform>().localPosition.x;
+            Debug.Log(width);
+            calibrationBtn.GetComponent<RectTransform>().transform.position += new Vector3(45f, 0f, 0f);
+            calibrationBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(280f, 25f);
+
             resetBtn.SetActive(false);
             reset_flag = true;
 
-            micIcon.SetActive(true);
-            micPulse.SetActive(true);
+            timeElapsed = TimeSpan.Zero;
+            previousFrameTime = DateTime.Now;
+
+            //micIcon.SetActive(true);
+            //micPulse.SetActive(true);
+            descBgImg = descriptionText.GetComponent<Image>();
+            if (descBgImg != null && infoSprite != null && recordSprite != null) {
+                descBgImg.sprite = recordSprite;        
+            }
+            countdownText.SetActive(true);
 
             for (int i = 0; i < spectrumSize; i++) {
                 //estimator.noise_spec[i] = 0f;
@@ -108,14 +138,22 @@ public class Calibration : MonoBehaviour {
         } 
         // Stop Recording
         else { 
+            calibrationBtn.GetComponent<RectTransform>().position += new Vector3(-45f, 0f, 0f);
+            calibrationBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(220f, 25f);
             calibrationBgImg.sprite = startSprite;
 
             resetBtn.SetActive(true);
             rBtn.enabled = reset_flag;
             resetBgImg.sprite = (reset_flag) ? resetActiveSprite : resetInactiveSprite;
 
-            micIcon.SetActive(false);
-            micPulse.SetActive(false);
+            //micIcon.SetActive(false);
+            //micPulse.SetActive(false);
+            descBgImg = descriptionText.GetComponent<Image>();
+            if (descBgImg != null && infoSprite != null && recordSprite != null) {
+                descBgImg.sprite = infoSprite;        
+            }
+            countdownText.SetActive(false);
+            micPulse.GetComponent<RectTransform>().sizeDelta = new Vector2((float) pulseMin, (float) pulseMin);   
 
             for (int i = 0; i < spectrumSize; i++) {
                 estimator.noise_spec[i] = cur_noise_spec[i];
@@ -143,6 +181,14 @@ public class Calibration : MonoBehaviour {
             float resize = (float) (pulseMid + (2 * pulseHR / Math.PI) * Math.Acos(Math.Cos(Math.PI * record_ct / pulsePeriod)) - pulseHR);
             micPulse.GetComponent<RectTransform>().sizeDelta = new Vector2(resize, resize);
 
+            if (timeElapsed.Seconds < calibrationPeriod) {
+                currentFrameTime = DateTime.Now;
+                TimeSpan elapsed = currentFrameTime - previousFrameTime;
+                timeElapsed = timeElapsed + elapsed;
+                previousFrameTime = currentFrameTime;
+            } else {
+                Calibrate();
+            }
             // estimate the fundamental frequency
             var frequency = estimator.Estimate(audioSource);
             var spectrum = estimator.Spec;
@@ -151,10 +197,12 @@ public class Calibration : MonoBehaviour {
                 float prev_noise = cur_noise_spec[i];
                 cur_noise_spec[i] = (prev_noise * (record_ct - 1) + spectrum[i]) / record_ct;
             }
+
+            countdownText.GetComponent<TMP_Text>().text = (calibrationPeriod - timeElapsed.Seconds).ToString();
         }
         // Not Recording 
         else { 
-            record_ct = 0;          
+            record_ct = 0;   
         }
     }
 
