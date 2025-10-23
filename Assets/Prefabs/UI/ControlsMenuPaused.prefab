@@ -108,12 +108,28 @@ PrefabInstance:
       value: 70.5
       objectReference: {fileID: 0}
     - target: {fileID: 1231428880215784077, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231428880215784077, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 302.3293
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231428880215784077, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231428880215784077, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418623330514698388, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
       propertyPath: m_Color.a
       value: 0.11764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535250558640496501, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_Name
+      value: Panel (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3340211838212290768, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -126,6 +142,42 @@ PrefabInstance:
     - target: {fileID: 3667347961334281272, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -53.54699
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727972694088790042, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_Name
+      value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762736551805178942, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762736551805178942, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762736551805178942, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762736551805178942, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762736551805178942, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762736551805178942, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762736551805178942, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762736551805178942, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4284774806931350018, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -233,11 +285,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5947715481652804913, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
       propertyPath: m_Name
-      value: ControlsMenu Variant
+      value: ControlsMenuPaused
       objectReference: {fileID: 0}
     - target: {fileID: 5947715481652804913, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238557807774818968, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
+      propertyPath: m_Name
+      value: Titles
       objectReference: {fileID: 0}
     - target: {fileID: 6315434481183609867, guid: 7a6a265a0e861f84aab18562685553f9, type: 3}
       propertyPath: m_Sprite

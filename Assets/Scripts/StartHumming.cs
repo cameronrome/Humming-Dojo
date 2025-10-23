@@ -2,50 +2,41 @@ using UnityEngine;
 
 public class StartHumming : MonoBehaviour, Interactable
 {
-    //[SerializeField] CameraFollow cameraFollow;
-    //[SerializeField] PlayerController playerController;
-    [SerializeField] private Player playerMovement;
-    [SerializeField] private GateOld gate;
+    [SerializeField] private Gate gate;
+    [SerializeField] private Player player;
     [SerializeField] private CameraManager cameraManager;
 
     private bool interacting = false;
 
     public void Interact()
     {
-        if (!interacting && gate.inRange) //hit interact once
+        if (!interacting && gate.playerInRange) //hit interact once
         {
             interacting = true;
-
-            //playerController.DisableMovement(); //for original movement controller
-            playerMovement.DisableMovement(); //for Jerry's new movement controller
-
-            //cameraFollow.StartCombatZoom(gate.GetDirection()); //for old camera holder
+            player.DisableMovement(); //for Jerry's new movement controller
             cameraManager.SwitchToShoulderCam(); //for cinemachine
-
             gate.ShowHumDial();
         }
-        else if (gate.inRange) //hit interact again, leaving the humming screen
+        else if (gate.playerInRange) //hit interact again, leaving the humming screen
         {
             interacting = false;
-
-            //playerController.EnableMovement(); //for original movement controller
-            playerMovement.EnableMovement(); //for Jerry's new movement controller
-
-            //cameraFollow.EndCombatZoom();
+            player.EnableMovement(); //for Jerry's new movement controller
             cameraManager.SwitchToBirdCam();
-
             gate.HideHumDial();
         }
         
     }
 
-    public void Update()
+    private void Start()
     {
-        if (gate.isOpen())
-        {
-            interacting = false;
-            playerMovement.EnableMovement();
-            cameraManager.SwitchToBirdCam();
-        }
+        gate.OnOpen += StopHumming;
+    }
+
+    private void StopHumming()
+    {
+        interacting = false;
+        player.EnableMovement();
+        cameraManager.SwitchToBirdCam();
+        gate.HideHumDial();
     }
 }

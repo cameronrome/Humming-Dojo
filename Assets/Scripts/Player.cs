@@ -19,12 +19,6 @@ public class Player : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
-    private void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     private void Update()
     {
         Vector3 velocity = Vector3.zero;
@@ -42,11 +36,14 @@ public class Player : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
+            animator.SetFloat("SpeedMultiplier", 1.2f);
             animator.SetBool("Running", true);
             animator.SetBool("Idle", false);
         }
         else
         {
+            controller.Move(velocity);
+            animator.SetFloat("SpeedMultiplier", 1f);
             animator.SetBool("Running", false);
             animator.SetBool("Idle", true);
         }
@@ -60,6 +57,7 @@ public class Player : MonoBehaviour
     public void DisableMovement()
     {
         canMove = false;
+        animator.SetFloat("SpeedMultiplier", 1f);
         animator.SetBool("Running", false);
         animator.SetBool("Idle", true);
     }

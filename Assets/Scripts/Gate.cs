@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Gate : MonoBehaviour
 {
     [SerializeField] private HumDial humDial;
+    [SerializeField] private Hud hud;
     [SerializeField] private List<Material> chakraMaterials = new();
     [SerializeField] private List<Renderer> chakras = new();
     [SerializeField] private List<int> keys = new();
@@ -16,18 +18,38 @@ public class Gate : MonoBehaviour
     private Color baseColor;
     private Color emissionColor;
 
+    public UnityAction OnOpen;
+    public bool playerInRange;
+
+    public void ShowHumDial()
+    {
+        humDial.SetKeys(keys);
+        humDial.Open();
+        humDial.OnHumPass += Open;
+        hud.Display("");
+    }
+
+    public void HideHumDial()
+    {
+        humDial.Close();
+        humDial.OnHumPass -= Open;
+        hud.Display("Press [e] to interact");
+    }
+
     public void OnTriggerEnter(Collider collider)
     {
         if (!collider.GetComponent<Player>()) return;
 
-        humDial.SetKeys(keys);
-        humDial.Open();
-        humDial.OnHumPass += Open;
+        playerInRange = true;
+        hud.Display("Press [e] to interact");
     }
 
     public void OnTriggerExit(Collider collider)
     {
-        humDial.Close();
+        if (!collider.GetComponent<Player>()) return;
+        
+        playerInRange = false;
+        hud.Display("");
     }
 
     public void Open()
@@ -80,6 +102,8 @@ public class Gate : MonoBehaviour
             yield return null;
         }
 
+        OnOpen?.Invoke();
+        hud.Display("");
         gameObject.SetActive(false);
     }
 }

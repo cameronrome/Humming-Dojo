@@ -12,6 +12,7 @@ public class HumDial : MonoBehaviour
     [SerializeField] private Image timer;
     [SerializeField] private Image icon;
     [SerializeField] private Transform markerAnchor;
+    [SerializeField] private Transform trailTransform;
     [SerializeField] private List<Image> tabs;
     [SerializeField] private List<Sprite> iconSprites;
     [SerializeField] private List<int> keys;
@@ -237,7 +238,7 @@ public class HumDial : MonoBehaviour
 
             if (targetAngle > angleDeg && dotTrail[i] == null)
             {
-                dotTrail[i] = Instantiate(dotPrefab, transform);
+                dotTrail[i] = Instantiate(dotPrefab, trailTransform);
                 dotTrail[i].transform.localPosition = new Vector3(-radius * Mathf.Cos(angleRad), radius * Mathf.Sin(angleRad) - offset);
             }
 
