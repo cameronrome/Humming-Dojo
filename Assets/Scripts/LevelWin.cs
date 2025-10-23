@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelWin : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private Player player;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -15,9 +15,9 @@ public class LevelWin : MonoBehaviour
 
     IEnumerator PlayWinAnimation()
     {
-        playerController.DisableMovement();
+        player.DisableMovement();
 
-        yield return new WaitForSeconds(4f); //time to play animation
+        yield return new WaitForSeconds(2f); //time to play animation
         //code to start player winning animation
 
         SceneManager.LoadScene("MainMenuScene");
