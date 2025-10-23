@@ -39,7 +39,7 @@ public class CombatSystem : MonoBehaviour
 
     //[SerializeField] private CameraFollow cameraFollow;
     //[SerializeField] PlayerController playerController;
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Player playerMovement;
     [SerializeField] private CameraManager cameraManager;
 
     //HEALTH AND BREATH CONSTANTS
@@ -70,7 +70,7 @@ public class CombatSystem : MonoBehaviour
 
             playerBreath = player.GetComponent<BreathMeter>();
 
-            humDial.setKeyDuration(.75f);
+            humDial.SetKeyDuration(.75f);
 
             StartCoroutine(SetupBattle());
         }
