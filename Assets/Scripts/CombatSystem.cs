@@ -31,6 +31,11 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private GameObject gemUI;
 
     [SerializeField] private HumDial humDial;
+    [SerializeField] private HumDial humDial2;
+    [SerializeField] private HumDial humDial3;
+    [SerializeField] private HumDial humDial4;
+
+
 
     //[SerializeField] private CameraFollow cameraFollow;
     //[SerializeField] PlayerController playerController;
@@ -113,19 +118,19 @@ public class CombatSystem : MonoBehaviour
 
             int keyNum = GetRandomKey(); 
 
-            humDial.SetKeys(new List<int>() { keyNum } );
-            humDial.Open();
+            humDial2.SetKeys(new List<int>() { keyNum } );
+            humDial2.Open();
 
             battle_text.text = "Hum the note to invoke a small attack.";
 
             UnityAction handler = () => AttackHelper(oneNoteAttackDMG, oneNoteAttackBRTH);
-            humDial.OnHumPass += handler; //use move on enemy
+            humDial2.OnHumPass += handler; //use move on enemy
 
             // wait until hum passes
             yield return new WaitUntil(() => humPassed);
 
             battle_text.text = "Your humming did light damage to the enemy.";
-            humDial.OnHumPass -= handler;
+            humDial2.OnHumPass -= handler;
         }
         yield return new WaitForSeconds(3f);
     }
@@ -144,19 +149,19 @@ public class CombatSystem : MonoBehaviour
             int keyNum = GetRandomKey();
             int keyNum2 = GetCloseKey(keyNum);
 
-            humDial.SetKeys(new List<int>() { keyNum, keyNum2 });
-            humDial.Open();
+            humDial2.SetKeys(new List<int>() { keyNum, keyNum2 });
+            humDial2.Open();
 
             battle_text.text = "Hum the notes to invoke a strong attack.";
 
             UnityAction handler = () => AttackHelper(twoNoteAttackDMG, twoNoteAttackBRTH);
-            humDial.OnHumPass += handler; //use move on enemy
+            humDial2.OnHumPass += handler; //use move on enemy
 
             // wait until hum passes
             yield return new WaitUntil(() => humPassed);
 
             battle_text.text = "Your humming pattern did medium damage to the enemy.";
-            humDial.OnHumPass -= handler;   
+            humDial2.OnHumPass -= handler;   
         }
         yield return new WaitForSeconds(3f);
     }
@@ -174,19 +179,19 @@ public class CombatSystem : MonoBehaviour
             int keyNum2 = GetCloseKey(keyNum);
             int keyNum3 = GetCloseKey(keyNum2);
 
-            humDial.SetKeys(new List<int>() { keyNum, keyNum2, keyNum3 });
-            humDial.Open();
+            humDial2.SetKeys(new List<int>() { keyNum, keyNum2, keyNum3 });
+            humDial2.Open();
 
             battle_text.text = "Hum the notes to invoke a very powerful attack.";
 
             UnityAction handler = () => AttackHelper(threeNoteAttackDMG, threeNoteAttackBRTH);
-            humDial.OnHumPass += handler; //use move on enemy
+            humDial2.OnHumPass += handler; //use move on enemy
 
             // wait until hum passes
             yield return new WaitUntil(() => humPassed);
 
             battle_text.text = "Your melodic chorus did heavy damage to the enemy!";
-            humDial.OnHumPass -= handler;
+            humDial2.OnHumPass -= handler;
         }
         yield return new WaitForSeconds(3f);
     }

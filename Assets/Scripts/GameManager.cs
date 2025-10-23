@@ -103,4 +103,39 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenuScene");
     }
 
+    public void DimUI(GameObject uiElement)
+    {
+        Graphic graphic = uiElement.GetComponent<Graphic>();
+
+        if (graphic != null)
+        {
+            Color currentColor = graphic.color;
+            currentColor.a *= 0.5f; // reduce opacity by 50%
+            graphic.color = currentColor;
+        }
+        else
+        {
+            Debug.LogWarning("GameObject has no UI Graphic component (e.g., Image, Text, etc.).");
+        }
+    }
+
+    public void RestoreUI(GameObject uiElement)
+{
+    Graphic graphic = uiElement.GetComponent<Graphic>();
+
+    if (graphic != null)
+    {
+        Color currentColor = graphic.color;
+        currentColor.a = 1f; // fully visible again
+        graphic.color = currentColor;
+    }
+    else
+    {
+        Debug.LogWarning("GameObject has no UI Graphic component (e.g., Image, Text, etc.).");
+    }
+}
+
+
+
+
 }
