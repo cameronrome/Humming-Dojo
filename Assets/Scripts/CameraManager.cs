@@ -1,6 +1,5 @@
 using UnityEngine;
 using Unity.Cinemachine;
-using System.Xml.Serialization;
 
 public class CameraManager : MonoBehaviour
 {
