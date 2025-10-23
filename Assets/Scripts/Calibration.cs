@@ -112,6 +112,8 @@ public class Calibration : MonoBehaviour {
         if (record_flag) { 
             calibrationBgImg.sprite = stopSprite;
 
+            float width = calibrationBtn.GetComponent<RectTransform>().localPosition.x;
+            Debug.Log(width);
             calibrationBtn.GetComponent<RectTransform>().transform.position += new Vector3(45f, 0f, 0f);
             calibrationBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(280f, 25f);
 
