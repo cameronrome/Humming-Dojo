@@ -3478,7 +3478,7 @@ PrefabInstance:
       objectReference: {fileID: 1926052900}
     - target: {fileID: 1207978688367982543, guid: ca6967f6b7cb6e84e82f019d20bdcf6e, type: 3}
       propertyPath: m_Name
-      value: Landscape
+      value: LandscapeOld
       objectReference: {fileID: 0}
     - target: {fileID: 2927141659210777925, guid: ca6967f6b7cb6e84e82f019d20bdcf6e, type: 3}
       propertyPath: m_Mesh
@@ -3545,7 +3545,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 71375046}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5726881206068344510, guid: ca6967f6b7cb6e84e82f019d20bdcf6e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca6967f6b7cb6e84e82f019d20bdcf6e, type: 3}
