@@ -24,13 +24,13 @@ public class GameManager : MonoBehaviour
 
     public void mainScene()
     {
-        SceneManager.LoadScene("TutorialBlockOut");
+        SceneManager.LoadScene("Level0");
     }
 
     public void NewGame()
     {
         PlayerPrefs.DeleteAll(); 
-        SceneManager.LoadScene("TutorialBlockOut");
+        SceneManager.LoadScene("Level0");
     }
 
     public void LoadGame()

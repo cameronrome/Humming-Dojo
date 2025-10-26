@@ -18,7 +18,7 @@ public class GemCollection : MonoBehaviour
             string key = $"Gem_{pos.x}_{pos.y}_{pos.z}";
             PlayerPrefs.SetInt(key, 1);
 
-            
+            SfxSpeaker.Instance.Play();
             Destroy(other.gameObject);
         }
     }

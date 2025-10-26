@@ -17,6 +17,7 @@ public class HumDial : MonoBehaviour
     [SerializeField] private List<Sprite> iconSprites;
     [SerializeField] private List<int> keys;
     [SerializeField] private GameObject dotPrefab;
+    [SerializeField] private AudioSource bgMusicSpeaker;
     [SerializeField] private float fadeDur = 1f;
     [SerializeField] private int numDots = 72;
 
@@ -54,6 +55,7 @@ public class HumDial : MonoBehaviour
 
     public void Open()
     {
+        bgMusicSpeaker.Stop();
         gameObject.SetActive(true);
         keyIdx = 0;
         keyTimer = keyDur;
@@ -67,6 +69,7 @@ public class HumDial : MonoBehaviour
 
     public void Close()
     {
+        bgMusicSpeaker.Play();
         gameObject.SetActive(false);
         keyIdx = 0;
 
