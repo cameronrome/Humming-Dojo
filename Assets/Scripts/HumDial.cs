@@ -55,7 +55,7 @@ public class HumDial : MonoBehaviour
 
     public void Open()
     {
-        bgMusicSpeaker.Stop();
+        bgMusicSpeaker.Pause();
         gameObject.SetActive(true);
         keyIdx = 0;
         keyTimer = keyDur;

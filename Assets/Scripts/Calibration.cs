@@ -51,6 +51,8 @@ public class Calibration : MonoBehaviour {
     private float[] cur_noise_spec = new float[spectrumSize];
     // public Vector3[] noise_lines = new Vector3[1024];
 
+    private bool wasBgMusicPlaying = false;
+
 	void Start () {
         if (dial == null || dial.micAudioSource == null) {
             micName = Microphone.devices[0];
@@ -109,7 +111,12 @@ public class Calibration : MonoBehaviour {
         record_flag = !record_flag;
 
         // Start Recording
-        if (record_flag) { 
+        if (record_flag) {
+            wasBgMusicPlaying = BackgroundMusic.Instance.GetComponent<AudioSource>().isPlaying;
+
+            if (wasBgMusicPlaying)
+                BackgroundMusic.Instance.Pause();
+
             calibrationBgImg.sprite = stopSprite;
 
             float width = calibrationBtn.GetComponent<RectTransform>().localPosition.x;
@@ -137,7 +144,10 @@ public class Calibration : MonoBehaviour {
             }
         } 
         // Stop Recording
-        else { 
+        else {
+            if (wasBgMusicPlaying)
+                BackgroundMusic.Instance.Play();
+
             calibrationBtn.GetComponent<RectTransform>().position += new Vector3(-45f, 0f, 0f);
             calibrationBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(220f, 25f);
             calibrationBgImg.sprite = startSprite;
