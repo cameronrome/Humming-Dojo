@@ -553,7 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dial: {fileID: 0}
   estimator: {fileID: 0}
-  micSilentGroup: {fileID: 0}
+  micSilentGroup: {fileID: -6774622242765485675, guid: 2a492a0f872c91244b7b3cc144a623ac, type: 2}
   calibrationBtn: {fileID: 5216991851359566237}
   startSprite: {fileID: 21300000, guid: 61bbe1eb946677b46b284ca49d381fec, type: 3}
   stopSprite: {fileID: 21300000, guid: 7a3b2a69f1ad97d4691fba863e5f6688, type: 3}
@@ -562,6 +562,10 @@ MonoBehaviour:
   resetActiveSprite: {fileID: 21300000, guid: bc9f4f34ec18c844ca41a9336ba04dd3, type: 3}
   micIcon: {fileID: 7939891531393345438}
   micPulse: {fileID: 8901395783471836711}
+  descriptionText: {fileID: 0}
+  infoSprite: {fileID: 0}
+  recordSprite: {fileID: 0}
+  countdownText: {fileID: 0}
 --- !u!1 &5490055789236987613
 GameObject:
   m_ObjectHideFlags: 0
