@@ -14,6 +14,7 @@ public class BreathDial : MonoBehaviour
     [SerializeField] private Sprite inhaleSprite;
     [SerializeField] private Sprite exhaleSprite;
     [SerializeField] private GameObject dotPrefab;
+    [SerializeField] private Hud hud;
     [SerializeField] private float inhaleDur = 5f;
     [SerializeField] private float exhaleDur = 4f;
     [SerializeField] private int numDots = 72;
@@ -36,6 +37,7 @@ public class BreathDial : MonoBehaviour
         wave.transform.localPosition = new Vector3(0, -150, 0);
         marker.transform.localPosition = new Vector3(0, -70, 0);
         marker.transform.rotation = Quaternion.identity;
+        hud.Display("Inhale");
     }
 
     private void UpdateTimer(bool forwards)
@@ -48,8 +50,6 @@ public class BreathDial : MonoBehaviour
 
     private void Start()
     {
-        Reset();
-
         dotTrail = new List<GameObject>();
 
         for (int i = 0; i < numDots; i++)
@@ -71,6 +71,11 @@ public class BreathDial : MonoBehaviour
         pitchEstimator = GetComponent<AudioPitchEstimator>();
     }
 
+    private void OnEnable()
+    {
+        Reset();
+    }
+
     private void Update()
     {
         if (timer.fillAmount >= 1f)
@@ -81,6 +86,7 @@ public class BreathDial : MonoBehaviour
                 timer.fillAmount = 0;
                 icon.sprite = exhaleSprite;
                 wave.transform.localPosition = new Vector3(0, -150, 0);
+                hud.Display("Exhale and hum");
             }
             else
             {
