@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2584272775522655251}
   - component: {fileID: 143826953807719034}
   - component: {fileID: 8084318960963752530}
+  - component: {fileID: 8111326442026761347}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Gem
@@ -137,6 +138,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8111326442026761347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126966687272388234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: -1302049290
+      Data2: 1304727713
+      Data3: -658004070
+      Data4: 580858705
+    Path: event:/GemCollect
+  Event: 
+  EventPlayTrigger: 3
+  EventStopTrigger: 4
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &3037484319807266395
 PrefabInstance:
   m_ObjectHideFlags: 0
