@@ -90,6 +90,7 @@ public class BreathDial : MonoBehaviour
             }
             else
             {
+                hud.Display("");
                 onBreathPass?.Invoke();
             }
         }

@@ -50,30 +50,29 @@ public class CombatSystem : MonoBehaviour
     private bool humPassed = false;
 
     public void BeginCombat()
-        {
-            gemUI.SetActive(false);
-            healthbarCanvas.SetActive(true);
+    {
+        gemUI.SetActive(false);
+        healthbarCanvas.SetActive(true);
 
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+        Debug.Log("Begin combat");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-        //cameraFollow.StartCombatZoom();
-            cameraManager.SwitchToShoulderCam();
-            //playerController.DisableMovement(); //for original movement controller
-            playerMovement.DisableMovement(); //for Jerry's new movement controller
+        cameraManager.SwitchToShoulderCam();
+        playerMovement.DisableMovement(); //for Jerry's new movement controller
 
-            state = CombatState.START;
+        state = CombatState.START;
 
-            enemyHealth = enemy.GetComponent<Health>();
-            playerHealth = player.GetComponent<Health>();
+        enemyHealth = enemy.GetComponent<Health>();
+        playerHealth = player.GetComponent<Health>();
 
-            playerBreath = player.GetComponent<BreathMeter>();
+        playerBreath = player.GetComponent<BreathMeter>();
 
-            humDial.SetKeyDuration(.75f);
-            breathDial.SetCombatDuration();
+        humDial.SetKeyDuration(.75f);
+        breathDial.SetCombatDuration();
 
-            StartCoroutine(SetupBattle());
-        }
+        StartCoroutine(SetupBattle());
+    }
 
     IEnumerator SetupBattle()
     {
