@@ -33,8 +33,6 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private HumDial humDial;
     [SerializeField] private BreathDial breathDial;
 
-
-
     //[SerializeField] private CameraFollow cameraFollow;
     //[SerializeField] PlayerController playerController;
     [SerializeField] private Player playerMovement;
@@ -60,11 +58,11 @@ public class CombatSystem : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
 
         //cameraFollow.StartCombatZoom();
-        cameraManager.SwitchToShoulderCam();
+            cameraManager.SwitchToShoulderCam();
             //playerController.DisableMovement(); //for original movement controller
             playerMovement.DisableMovement(); //for Jerry's new movement controller
 
-        state = CombatState.START;
+            state = CombatState.START;
 
             enemyHealth = enemy.GetComponent<Health>();
             playerHealth = player.GetComponent<Health>();
@@ -72,6 +70,7 @@ public class CombatSystem : MonoBehaviour
             playerBreath = player.GetComponent<BreathMeter>();
 
             humDial.SetKeyDuration(.75f);
+            breathDial.SetCombatDuration();
 
             StartCoroutine(SetupBattle());
         }
@@ -370,6 +369,8 @@ public class CombatSystem : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        breathDial.ResetDuration(); // turn breathing duration back to normal
 
         //playerController.EnableMovement(); //for original movement controller
         playerMovement.EnableMovement(); //for Jerry's new movement controller

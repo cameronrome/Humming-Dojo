@@ -138,4 +138,16 @@ public class BreathDial : MonoBehaviour
         }
         
     }
+
+    public void SetCombatDuration()
+    {
+        inhaleDur = 3f;
+        exhaleDur = 2f;
+    }
+
+    public void ResetDuration()
+    {
+        inhaleDur = 5f;
+        exhaleDur = 4f;
+    }
 }
