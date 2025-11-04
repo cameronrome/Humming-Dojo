@@ -147,6 +147,16 @@ public class HumDial : MonoBehaviour
 
     private void Start()
     {
+        dotTrail = new List<GameObject>();
+
+        for (int i = 0; i < numDots; i++)
+        {
+            dotTrail.Add(null);
+        }
+    }
+
+    private void OnEnable()
+    {
         micName = Microphone.devices[0];
         micClip = Microphone.Start(micName, true, 1, 44100);
 
@@ -159,12 +169,6 @@ public class HumDial : MonoBehaviour
         micAudioSource.Play();
 
         pitchEstimator = GetComponent<AudioPitchEstimator>();
-        dotTrail = new List<GameObject>();
-
-        for (int i = 0; i < numDots; i++)
-        {
-            dotTrail.Add(null);
-        }
     }
 
     private void Update()

@@ -57,6 +57,22 @@ public class BreathDial : MonoBehaviour
             dotTrail.Add(null);
         }
 
+        // micName = Microphone.devices[0];
+        // micClip = Microphone.Start(micName, true, 1, 44100);
+
+        // micAudioSource = gameObject.AddComponent<AudioSource>();
+        // micAudioSource.clip = micClip;
+        // micAudioSource.loop = true;
+        // micAudioSource.outputAudioMixerGroup = micSilentGroup;
+
+        // while (!(Microphone.GetPosition(micName) > 0)) { }
+        // micAudioSource.Play();
+
+        // pitchEstimator = GetComponent<AudioPitchEstimator>();
+    }
+
+    private void OnEnable()
+    {
         micName = Microphone.devices[0];
         micClip = Microphone.Start(micName, true, 1, 44100);
 
@@ -69,10 +85,7 @@ public class BreathDial : MonoBehaviour
         micAudioSource.Play();
 
         pitchEstimator = GetComponent<AudioPitchEstimator>();
-    }
 
-    private void OnEnable()
-    {
         Reset();
     }
 
