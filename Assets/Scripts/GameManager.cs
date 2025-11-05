@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject pauseMenuUI;
+    // public GameObject pauseMenuUI;
     public bool isPaused = false;
 
     [Header("Rotating Image 1")]
@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         // Disable the Load Game button if no save exists
         if (!PlayerPrefs.HasKey("CurrentHealth"))
         {
@@ -83,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        // pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
         // Optionally re-enable player control script here
@@ -91,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        // pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
         // Optionally disable player control script here

@@ -18,6 +18,7 @@ public class BackgroundMusic : MonoBehaviour
 
     public void Play()
     {
+        if (GetComponent<AudioSource>().isPlaying) return;
         GetComponent<AudioSource>().Play();
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelWin : MonoBehaviour
 {
     [SerializeField] private Player player;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -20,6 +21,7 @@ public class LevelWin : MonoBehaviour
         yield return new WaitForSeconds(2f); //time to play animation
         //code to start player winning animation
 
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenuScene");
     }
 }
