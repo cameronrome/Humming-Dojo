@@ -2,28 +2,41 @@ using UnityEngine;
 
 public class StartHumming : MonoBehaviour, Interactable
 {
-    [SerializeField] CameraFollow cameraFollow;
-    [SerializeField] PlayerController playerController;
-    [SerializeField] Gate gate;
+    [SerializeField] private Gate gate;
+    [SerializeField] private Player player;
+    [SerializeField] private CameraManager cameraManager;
 
     private bool interacting = false;
 
     public void Interact()
     {
-        if (!interacting && gate.inRange) //hit interact once
+        if (!interacting && gate.playerInRange) //hit interact once
         {
             interacting = true;
-            playerController.DisableMovement();
-            cameraFollow.StartCombatZoom(gate.GetDirection());
+            player.DisableMovement(); //for Jerry's new movement controller
+            cameraManager.SwitchToShoulderCam(); //for cinemachine
             gate.ShowHumDial();
         }
-        else if (gate.inRange) //hit interact again, leaving the humming screen
+        else if (gate.playerInRange) //hit interact again, leaving the humming screen
         {
             interacting = false;
-            playerController.EnableMovement();
-            cameraFollow.EndCombatZoom();
+            player.EnableMovement(); //for Jerry's new movement controller
+            cameraManager.SwitchToBirdCam();
             gate.HideHumDial();
         }
         
+    }
+
+    private void Start()
+    {
+        gate.OnOpen += StopHumming;
+    }
+
+    private void StopHumming()
+    {
+        interacting = false;
+        player.EnableMovement();
+        cameraManager.SwitchToBirdCam();
+        gate.HideHumDial();
     }
 }

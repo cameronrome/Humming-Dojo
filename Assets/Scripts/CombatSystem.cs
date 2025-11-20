@@ -31,9 +31,12 @@ public class CombatSystem : MonoBehaviour
     [SerializeField] private GameObject gemUI;
 
     [SerializeField] private HumDial humDial;
+    [SerializeField] private BreathDial breathDial;
 
-    [SerializeField] private CameraFollow cameraFollow;
-    [SerializeField] private PlayerController playerController;
+    //[SerializeField] private CameraFollow cameraFollow;
+    //[SerializeField] PlayerController playerController;
+    [SerializeField] private Player playerMovement;
+    [SerializeField] private CameraManager cameraManager;
 
     //HEALTH AND BREATH CONSTANTS
     private float oneNoteAttackDMG = 10f;
@@ -47,24 +50,29 @@ public class CombatSystem : MonoBehaviour
     private bool humPassed = false;
 
     public void BeginCombat()
-        {
-            gemUI.SetActive(false);
-            healthbarCanvas.SetActive(true);
+    {
+        gemUI.SetActive(false);
+        healthbarCanvas.SetActive(true);
 
-            cameraFollow.StartCombatZoom();
-            playerController.DisableMovement();
+        Debug.Log("Begin combat");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-            state = CombatState.START;
+        cameraManager.SwitchToShoulderCam();
+        playerMovement.DisableMovement(); //for Jerry's new movement controller
 
-            enemyHealth = enemy.GetComponent<Health>();
-            playerHealth = player.GetComponent<Health>();
+        state = CombatState.START;
 
-            playerBreath = player.GetComponent<BreathMeter>();
+        enemyHealth = enemy.GetComponent<Health>();
+        playerHealth = player.GetComponent<Health>();
 
-            humDial.setKeyDuration(.75f);
+        playerBreath = player.GetComponent<BreathMeter>();
 
-            StartCoroutine(SetupBattle());
-        }
+        humDial.SetKeyDuration(.75f);
+        breathDial.SetCombatDuration();
+
+        StartCoroutine(SetupBattle());
+    }
 
     IEnumerator SetupBattle()
     {
@@ -225,14 +233,23 @@ public class CombatSystem : MonoBehaviour
         float current_breath = playerBreath.GetCurrentBreath();
         float max_breath = playerBreath.GetMaxBreath();
 
+        humPassed = false;
+
         if (current_breath == max_breath)
         {
             battle_text.text = "You are unable to gain any more breath from your meditation.";
         }
         else
         {
-            playerBreath.RestoreBreath(35);
+            breathDial.gameObject.SetActive(true);
+
+            battle_text.text = "Meditate to gain back your breath.";
+
+            breathDial.onBreathPass += BreathHelper;
+            yield return new WaitUntil(() => humPassed);
+
             battle_text.text = "Your thoughtful meditation has caused your breath to restore.";
+            humDial.OnHumPass -= BreathHelper;
         }
         yield return new WaitForSeconds(3f);
     }
@@ -273,6 +290,13 @@ public class CombatSystem : MonoBehaviour
         playerHealth.Heal(35);
         humPassed = true;
         humDial.Close();
+    }
+
+    private void BreathHelper()
+    {
+        playerBreath.RestoreBreath(35);
+        humPassed = true;
+        breathDial.gameObject.SetActive(false);
     }
 
     private bool CheckBreath(float breath_needed) //returns true if it used breath
@@ -342,8 +366,14 @@ public class CombatSystem : MonoBehaviour
 
         enemy.SetActive(false);
 
-        playerController.EnableMovement();
-        cameraFollow.EndCombatZoom();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        breathDial.ResetDuration(); // turn breathing duration back to normal
+
+        //playerController.EnableMovement(); //for original movement controller
+        playerMovement.EnableMovement(); //for Jerry's new movement controller
+        cameraManager.SwitchToBirdCam();
         gemUI.SetActive(true);
     }
 
@@ -356,6 +386,9 @@ public class CombatSystem : MonoBehaviour
         combatCanvas.SetActive(false);
         attackCanvas.SetActive(false);
         healthbarCanvas.SetActive(false);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         // playerController.EnableMovement(); //optional code to give player movement back, if scene isn't reloaded
 

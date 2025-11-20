@@ -1,12 +1,22 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject controlsMenuUI;
+    public GameObject settingsMenuUI;
+    public GameObject exitLevelUI;
     public bool isPaused = false;
 
-    void Update()
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -20,23 +30,33 @@ public class PauseManager : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        controlsMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(false);
+        exitLevelUI.SetActive(false);
         isPaused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
+
         // Optionally re-enable player control script here
     }
 
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
         isPaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+        EventSystem.current.SetSelectedGameObject(null);
+
         // Optionally disable player control script here
     }
 
     public void QuitToMainMenu()
     {
         Time.timeScale = 1f; // reset before switching scenes
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void QuitGame()

@@ -1,62 +1,109 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Gate : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
     [SerializeField] private HumDial humDial;
-    [SerializeField] private List<int> keys;
+    [SerializeField] private Hud hud;
+    [SerializeField] private List<Material> chakraMaterials = new();
+    [SerializeField] private List<Renderer> chakras = new();
+    [SerializeField] private List<int> keys = new();
+    [SerializeField] private float fadeDur = 2f;
 
-    [SerializeField] private string direction;
+    private List<Color> chakraBaseColors = new();
+    private List<Color> chakraEmissionColors = new();
+    private Material material;
+    private Color baseColor;
+    private Color emissionColor;
 
-    public bool inRange;
-
-    private bool opened;
+    public UnityAction OnOpen;
+    public bool playerInRange;
 
     public void ShowHumDial()
     {
-        if (opened) return;
-
         humDial.SetKeys(keys);
         humDial.Open();
+        humDial.OnHumPass += Open;
+        hud.Display("");
     }
 
     public void HideHumDial()
     {
         humDial.Close();
+        humDial.OnHumPass -= Open;
+        hud.Display("Press [e] to interact");
     }
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "Player" && !opened)
-        {
-            inRange = true;
-        }
+        if (!collider.GetComponent<Player>()) return;
+
+        playerInRange = true;
+        hud.Display("Press [e] to interact");
     }
 
     public void OnTriggerExit(Collider collider)
     {
-        if (collider.tag == "Player")
-        {
-            inRange = false;
-        }
+        if (!collider.GetComponent<Player>()) return;
+        
+        playerInRange = false;
+        hud.Display("");
     }
 
-    private void OpenGate()
+    public void Open()
     {
-        if (opened || !inRange) return;
-
-        animator.SetBool("Opened", true);
-        opened = true;
+        StartCoroutine(FadeOut());
     }
 
     private void Start()
     {
-        humDial.OnHumPass += OpenGate;
+        material = GetComponent<Renderer>().material;
+        baseColor = material.GetColor("_BaseColor");
+        emissionColor = material.GetColor("_EmissionColor");
+
+        for (int i = 0; i < chakras.Count; i++)
+        {
+            if (i >= 0 || i < keys.Count)
+            {
+                chakras[i].material = chakraMaterials[keys[i]];
+                chakraBaseColors.Add(chakras[i].material.GetColor("_BaseColor"));
+                chakraEmissionColors.Add(chakras[i].material.GetColor("_EmissionColor"));
+            }
+        }
     }
 
-    public string GetDirection()
+    private IEnumerator FadeOut()
     {
-        return direction;
+        float timer = 0f;
+        while (timer < fadeDur)
+        {
+            timer += Time.deltaTime;
+
+            float progress = timer / fadeDur;
+            float alpha = Mathf.Lerp(1f, 0f, progress);
+
+            Color newBaseColor = new Color(baseColor.r, baseColor.g, baseColor.b, alpha);
+            Color newEmissionColor = emissionColor * alpha;
+
+            material.SetColor("_BaseColor", newBaseColor);
+            material.SetColor("_EmissionColor", newEmissionColor);
+
+            for (int i = 0; i < chakras.Count; i++)
+            {
+                Color newChakraBaseColor = new Color(chakraBaseColors[i].r, chakraBaseColors[i].g, chakraBaseColors[i].b, alpha);
+                Color newChakraEmissionColor = chakraEmissionColors[i] * alpha;
+
+                chakras[i].material.SetColor("_BaseColor", newChakraBaseColor);
+                chakras[i].material.SetColor("_EmissionColor", newChakraEmissionColor);
+            }
+
+            yield return null;
+        }
+
+        OnOpen?.Invoke();
+        hud.Display("");
+        gameObject.SetActive(false);
     }
 }

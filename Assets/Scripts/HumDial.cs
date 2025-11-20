@@ -12,6 +12,7 @@ public class HumDial : MonoBehaviour
     [SerializeField] private Image timer;
     [SerializeField] private Image icon;
     [SerializeField] private Transform markerAnchor;
+    [SerializeField] private Transform trailTransform;
     [SerializeField] private List<Image> tabs;
     [SerializeField] private List<Sprite> iconSprites;
     [SerializeField] private List<int> keys;
@@ -23,13 +24,13 @@ public class HumDial : MonoBehaviour
 
     private List<GameObject> dotTrail;
     private AudioClip micClip;
-    private AudioSource micAudioSource;
+    public AudioSource micAudioSource;
     private AudioPitchEstimator pitchEstimator;
     public AudioMixerGroup micSilentGroup;
     private string micName;
     private float prevAngle;
     private float silentTimer;
-    private float silentDur = 1.5f;
+    private float silentDur = 0.25f;
 
     private int keyIdx;
     private float keyTimer;
@@ -53,6 +54,7 @@ public class HumDial : MonoBehaviour
 
     public void Open()
     {
+        BackgroundMusic.Instance.Pause();
         gameObject.SetActive(true);
         keyIdx = 0;
         keyTimer = keyDur;
@@ -66,8 +68,17 @@ public class HumDial : MonoBehaviour
 
     public void Close()
     {
+        BackgroundMusic.Instance.Play();
         gameObject.SetActive(false);
         keyIdx = 0;
+
+        foreach (Image tab in tabs)
+            tab.color = new Color(tab.color.r, tab.color.g, tab.color.b, 0.8f);
+    }
+
+    public void SetKeyDuration(float time)
+    {
+        keyDur = time;
     }
 
     private IEnumerator promptTab(int idx)
@@ -135,6 +146,16 @@ public class HumDial : MonoBehaviour
 
     private void Start()
     {
+        dotTrail = new List<GameObject>();
+
+        for (int i = 0; i < numDots; i++)
+        {
+            dotTrail.Add(null);
+        }
+    }
+
+    private void OnEnable()
+    {
         micName = Microphone.devices[0];
         micClip = Microphone.Start(micName, true, 1, 44100);
 
@@ -147,12 +168,6 @@ public class HumDial : MonoBehaviour
         micAudioSource.Play();
 
         pitchEstimator = GetComponent<AudioPitchEstimator>();
-        dotTrail = new List<GameObject>();
-
-        for (int i = 0; i < numDots; i++)
-        {
-            dotTrail.Add(null);
-        }
     }
 
     private void Update()
@@ -207,6 +222,8 @@ public class HumDial : MonoBehaviour
                         timer.fillAmount = 0;
                         StartCoroutine(resetTabs());
                         OnHumPass?.Invoke();
+                        // StartCoroutine(resetTabs());
+                        // Invoke(nameof(Close), fadeDur);
                     }
                 }
             }
@@ -228,7 +245,7 @@ public class HumDial : MonoBehaviour
 
             if (targetAngle > angleDeg && dotTrail[i] == null)
             {
-                dotTrail[i] = Instantiate(dotPrefab, transform);
+                dotTrail[i] = Instantiate(dotPrefab, trailTransform);
                 dotTrail[i].transform.localPosition = new Vector3(-radius * Mathf.Cos(angleRad), radius * Mathf.Sin(angleRad) - offset);
             }
 
@@ -255,8 +272,4 @@ public class HumDial : MonoBehaviour
         prevAngle = targetAngle;
     }
 
-    public void setKeyDuration(float time)
-    {
-        keyDur = time;
-    }
 }

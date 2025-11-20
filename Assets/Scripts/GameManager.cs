@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject pauseMenuUI;
+    // public GameObject pauseMenuUI;
     public bool isPaused = false;
 
     [Header("Rotating Image 1")]
@@ -24,13 +24,13 @@ public class GameManager : MonoBehaviour
 
     public void mainScene()
     {
-        SceneManager.LoadScene("TutorialBlockOut");
+        SceneManager.LoadScene("Level0");
     }
 
     public void NewGame()
     {
         PlayerPrefs.DeleteAll(); 
-        SceneManager.LoadScene("TutorialBlockOut");
+        SceneManager.LoadScene("Level0");
     }
 
     public void LoadGame()
@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         // Disable the Load Game button if no save exists
         if (!PlayerPrefs.HasKey("CurrentHealth"))
         {
@@ -83,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        // pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
         // Optionally re-enable player control script here
@@ -91,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        // pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
         // Optionally disable player control script here
@@ -102,5 +105,40 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f; // reset before switching scenes
         SceneManager.LoadScene("MainMenuScene");
     }
+
+    public void DimUI(GameObject uiElement)
+    {
+        Graphic graphic = uiElement.GetComponent<Graphic>();
+
+        if (graphic != null)
+        {
+            Color currentColor = graphic.color;
+            currentColor.a *= 0.5f; // reduce opacity by 50%
+            graphic.color = currentColor;
+        }
+        else
+        {
+            Debug.LogWarning("GameObject has no UI Graphic component (e.g., Image, Text, etc.).");
+        }
+    }
+
+    public void RestoreUI(GameObject uiElement)
+{
+    Graphic graphic = uiElement.GetComponent<Graphic>();
+
+    if (graphic != null)
+    {
+        Color currentColor = graphic.color;
+        currentColor.a = 1f; // fully visible again
+        graphic.color = currentColor;
+    }
+    else
+    {
+        Debug.LogWarning("GameObject has no UI Graphic component (e.g., Image, Text, etc.).");
+    }
+}
+
+
+
 
 }
